@@ -10,7 +10,7 @@ do
 done
 
 echo "Apply database migrations."
-python3 manage.py migrate
+python manage.py migrate
 
 # Run command
 echo "Running: $@"

@@ -15,8 +15,13 @@ services:
     container_name: thecodeofthings_django
     build:
       context: "./thecodeofthings"
+      args:
+        IS_LOCAL_ENV: "true"
     hostname: django
     env_file: development.env
+    volumes:
+      - ./thecodeofthings:/code
+      - ./thecodeofthings/media:/media
     links:
       - db
     depends_on:

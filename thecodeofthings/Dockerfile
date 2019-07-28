@@ -18,6 +18,11 @@ COPY ./requirements /code/requirements
 RUN pip install --upgrade pip
 RUN pip install -r /code/requirements/production.txt
 
+ARG IS_LOCAL_ENV
+RUN if [ "$IS_LOCAL_ENV" = "true" ]; \
+    then pip install -Ur /code/requirements/development.txt; \
+    fi
+
 COPY . /code/
 WORKDIR /code/
 

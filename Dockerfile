@@ -14,7 +14,7 @@ RUN apt-get install postgresql-client-10 -y
 # Set environment varibles
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements /code/requirements
+COPY ./thecodeofthings/requirements /code/requirements
 RUN pip install --upgrade pip
 RUN pip install -r /code/requirements/production.txt
 
@@ -23,7 +23,7 @@ RUN if [ "$IS_LOCAL_ENV" = "true" ]; \
     then pip install -Ur /code/requirements/development.txt; \
     fi
 
-COPY . /code/
+COPY ./thecodeofthings/ /code/
 WORKDIR /code/
 
-COPY /scripts/entrypoint.sh /entrypoint.sh
+COPY ./thecodeofthings/scripts/entrypoint.sh /entrypoint.sh

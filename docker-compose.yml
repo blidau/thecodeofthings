@@ -14,7 +14,7 @@ services:
   django:
     container_name: thecodeofthings_django
     build:
-      context: "./thecodeofthings"
+      context: "."
       args:
         IS_LOCAL_ENV: "true"
     hostname: django

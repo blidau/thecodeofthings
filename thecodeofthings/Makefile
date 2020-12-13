@@ -8,7 +8,7 @@ help:
 lint:
 	pylint --load-plugins pylint_django *
 	flake8
-	isort -rc --check-only .
+	isort --check-only .
 checkmigrations:
 	python manage.py makemigrations --dry-run --check
 test:

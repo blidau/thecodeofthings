@@ -1,40 +1,98 @@
-{% load static wagtailuserbar %}
-
+{% load staticfiles %}{% load static wagtailuserbar %}
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>
-            {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
-            {% endblock %}
-            {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
-                    {% if site_name %}- {{ site_name }}{% endif %}
-                {% endwith %}
-            {% endblock %}
-        </title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html
+  {% block xhtmlns %}{% endblock %}prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/ og: http://ogp.me/ns# article: http://ogp.me/ns/article#"
+  lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}{% endblock %}the code of things{% block subtitle %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% block metadata %}{% endblock %}
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+  <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Coda%7CDidact+Gothic' />
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/reset.css' %}" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/screen.css' %}?v=20150713" />
+  <link rel="stylesheet" type="text/css" media="print" href="{% static 'css/print.css' %}" />
+  <meta name="google-site-verification" content="7ON9GuRTm8S78RrU4OxAlkuxhCFXAAzLrIlzpRFoL5c" />
+  <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv-printshiv.min.js' %}"></script>
+    <![endif]-->
+  {% block scripts %}{% endblock %}
+</head>
+<body{% block bodymeta %}{% endblock %}>
+  {% wagtailuserbar %}
+  <div id="the-code-of-things">
+    <header id="site-header">
+      <div id="site-center-header">
+        <h1><a href="/">the code of things</a></h1>
+        <p>Biographical Poetry in Print and Programmable Media</p>
+        <nav id="site-nav">
+          <ul>
+            <li><a {% block home %}{% endblock %}href="/">Home</a></li><li>
+            <a {% block about %}{% endblock %}href="">About</a></li><li>
+            <a {% block posts %}{% endblock %}href="">Blog</a></li><li>
+            <a {% block material %}{% endblock %}href="">Material</a></li><li>
+            <a {% block references %}{% endblock %}href="">References</a></li><li>
+            <a {% block poems %}{% endblock %}href="">Poems</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="contents">
+      {% block contents %}
+      <main {% block main_additional %}{% endblock %}>
+        {% block main %}{% endblock %}
+      </main>
+      {% block additionalwrap %}<div id="additional">
+        {% block additional %}{% endblock %}
+      </div>{% endblock %}
+      {% endblock %}
+    </div>
+    <footer id="site-footer">
+      <div id="site-center-footer">
+        {% if quote %}
+        <aside class="quote">
+          <blockquote>
+            {{quote.quote|safe}}
+            <cite>{{ quote.citation }}</cite>
+          </blockquote>
+        </aside>
+        {% endif %}
+        <div id="contact">
+          <h2>Contact</h2>
+          <address>
+            <ul>
+              <li><span id="email">benjamin@thecodeofthings.com</span></li>
+              <li><a class="twitter" href="https://twitter.com/benjaminlaird">@benjaminlaird</a></li>
+              <li><a id="linkedin" href="https://www.linkedin.com/in/benjaminlaird">/in/benjaminlaird</a>
+              </li>
+            </ul>
+          </address>
+        </div>
+        {% block copyright %}<div id="copyright">
+          <h2>Copyright</h2>
+          <p>Except where otherwise noted, content on this page is licensed under a <a rel="license"
+              href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+              Attribution-ShareAlike 4.0 International Licence</a>.<br /><a rel="license"
+              href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence"
+                src="{% static 'images/by-sa.svg' %}" /></a></p>
+        </div>{% endblock %}
+      </div>
+    </footer>
+  </div>
+  <script>
+    //<![CDATA[
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/thecodeofthings.css' %}">
+      ga('create', 'UA-56933936-1', 'auto');
+      ga('send', 'pageview');
+    //]]>
+  </script>
+  </body>
 
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
-    </head>
-
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
-
-        {% block content %}{% endblock %}
-
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/thecodeofthings.js' %}"></script>
-
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
-    </body>
 </html>

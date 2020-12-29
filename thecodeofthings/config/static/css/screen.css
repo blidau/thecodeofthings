@@ -1,0 +1,1634 @@
+﻿/**
+ * the code of things screen styles
+ **/
+@charset "utf-8";
+html { padding:0; margin:0; height:100%; }
+body {
+  font-family: 'Didact Gothic', sans-serif;
+  line-height: 1.3em;
+  color: #3B3C40;
+  background-color: #3B3C40;
+  height:100%;
+}
+h1 { font-size: 200%; padding:0.1em 0; margin:0; color: #3B3C40; line-height: 1em; font-weight: 400; }
+h2 { font-size: 180%; padding:0; margin:0; color: #3B3C40; line-height: 1em; font-weight: 400; }
+h3 { font-size: 160%; padding:0; margin:0; color: #3B3C40; line-height: 1em; font-weight: 400; }
+h4 { font-size: 140%; padding:0; margin:0; color: #3B3C40; line-height: 1em; font-weight: 400; }
+h5 { font-size: 120%; padding:0; margin:0; color: #3B3C40; line-height: 1em; font-weight: 400; }
+h6 { font-size: 100%; padding:0; margin:0; color: #3B3C40; line-height: 1em; font-weight: 400; }
+
+abbr {
+  border-bottom: 1px dotted #3B3C40;
+}
+#home h1 {
+  font-size: 3em;
+  margin-left: 0.5em;
+}
+#page h3 {
+  padding:0.7em 0 0.2em 0;
+}
+a:link, a:visited {
+  color: #3B3C40;
+}
+a:focus, a:hover, a:active {
+  color: #3B3C40;
+  text-decoration: none;
+}
+h1 a, h2 a, h3 a {
+  text-decoration: none;
+}
+aside p {
+  margin:0.3em 0;
+}
+
+cite {
+  font-style: italic;
+}
+cite.read-more,
+cite.essay {
+  font-style: normal;
+}
+cite.read-more::before,
+cite.essay::before {
+  content:"“";
+}
+cite.read-more::after,
+cite.essay::after {
+  content:"”";
+}
+
+header#site-header {
+  color:#FFF8DF;
+  /* background-color: #055A10; */
+  background-color: #3B3C40;
+  padding-bottom:0.5em;
+  min-width: 60em;
+  height:4em;
+}
+header#site-header div {
+  width:60em;
+  margin:auto;
+  height:4em;
+}
+footer#site-footer div#site-center-footer {
+  width:60em;
+  margin:auto;
+  position:relative;
+}
+div#copyright {
+  width:18.5em;
+  position:absolute;
+  padding-right: 1em;
+  top:0.5em;
+  left:1.5em;
+}
+div#copyright a img {
+  margin-top: 0.5em;
+  vertical-align: middle;
+  padding-right:3em;
+}
+div#copyright a img {
+  width:6em;
+}
+div#contact {
+  position:absolute;
+  width:20em;
+  padding-right: 1em;
+  top:0.5em;
+  /* left: 21em */;
+  left:24em;	
+}
+div#contact dt {
+  float:left;
+  clear:left;
+}
+div#contact dd::before {
+  content:":";
+}
+
+div#contact dd {
+  float:left;
+}
+div#format {
+  position:absolute;
+  /* width:20em;*/
+  width: 24em;
+  padding-right: 1em;
+  left:1.5em;
+  top:12em;
+}
+div#format h1 {
+  width:0;
+  height:0;
+  position:absolute;
+  left:-1000px;
+}
+div#format p,
+div#format li {
+  display: inline;
+}
+div#format ul {
+  display: inline;
+}
+footer#site-footer div#site-center-footer h2 {
+  font-size: 1.4em;
+  font-weight: 400;
+  padding: 0.5em 0 0.3em 0;
+  color:#FFF8DF;
+}
+#site-footer a:link,
+#site-footer a:visited,
+#site-footer a { 
+  color:#FFF8DF;	
+  text-decoration: underline;
+}
+
+#site-footer a:focus,
+#site-footer a:hover,
+#site-footer a:active { 
+  color:#FFF8DF;
+  text-decoration: none;
+}
+#site-footer {
+  clear:both;
+  min-width: 60em;
+  color: #FFF8DF;
+  height: 12em;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: #3B3C40 url("../images/denton-background.png") no-repeat center bottom;
+  background-size: 750px 350px;
+}
+
+header#site-header h1 {
+  font-family: 'Coda', cursive;
+  color:#FFF8DF;
+  font-weight: 700;
+  /* background-color: #055A10; */
+  background-color: #3B3C40;
+  padding:0.5em 1em 0;
+  margin:0;
+  font-size: 1.5em;
+  text-align: right;
+  /*text-shadow:
+    -1px -1px 0 #666,
+    1px -1px 0 #666,
+    -1px 1px 0 #666,
+    1px 1px 0 #666;*/
+    min-height: 30px;
+}
+header#site-header h1 a {
+  background: url("../images/denton.png") no-repeat 0 3px;
+  background-size: 1.5em;
+  padding:3px 0 3px 40px;
+  color:#FFF8DF;
+}
+header#site-header p {
+  float:right;
+  padding-right:1.5em;
+  color: #FFF8DF;
+  background-color: #3B3C40;
+}
+#secondary-nav {
+  margin: 1em 0 0 1em;
+}
+#secondary-nav li {
+  display: inline-block;
+  padding:0;
+  margin: 0 0 0.3em 0.2em;
+  /*padding:2px;*/
+  background-color: #3B3C40;
+  border:1px solid #3B3C40;
+}
+#secondary-nav li a, #secondary-nav li span {
+  color:#FFF8DF;
+  display:block;
+  padding:0.1em 0.3em;
+  text-decoration: none;
+  margin:0;
+  background-color: #3B3C40;
+}
+nav ul {
+  padding-left:1em;
+  height:1.2em;
+}
+nav li {
+  display: inline-block;
+  padding:0em 0.2em;
+}
+nav li a, nav li span {
+  color:#FFF8DF;
+  padding:0.1em 0.3em;
+  text-decoration: none;
+  margin:-0.3em 0 0;
+  display: block;
+  border:1px solid #FFF8DF;
+  /* transition: color 1s, background-color 1s; */
+}
+nav li a:link, nav li a:visited,
+#secondary-nav li a:link, #secondary-nav li a:visited {
+  color:#FFF8DF;
+  background-color: #3B3C40;
+}
+nav li a:focus, nav li a:hover, nav li a:active,
+#secondary-nav li a:focus, #secondary-nav li a:hover, #secondary-nav li a:active {
+  color:#3B3C40;
+  background-color: #FFF8DF;
+  text-decoration: none;
+}
+nav li span.current, nav li a.current:link, nav li a.current:visited, 
+#secondary-nav li span.current, #secondary-nav li a.current:link, #secondary-nav li a.current:visited {
+  background-color:#FFF8DF;
+  color: #3B3C40;
+}
+nav li a.current:focus, nav li a.current:hover, nav li a.current:active,
+#secondary-nav li a.current:focus, #secondary-nav li a.current:hover, #secondary-nav li a.current:active {
+  background-color:#3B3C40;
+  color: #FFF8DF;
+  text-decoration: none;
+} 
+#the-code-of-things {
+  background: #FFF8DF url("../images/denton-background.png") no-repeat center bottom;
+  background-size: 750px 350px;
+  min-width: 60em;
+  position: relative;
+  min-height: 100%;
+}
+/* fix this to make a more dynamic layout without the footer riding up */
+#contents {
+  width:60em;
+  margin:auto;
+  padding-bottom: 12em;
+  overflow: hidden;
+}
+#additional {
+  /* border:1px solid red; */
+  width:13.7em;
+  float:right;
+  padding: 3.5em 1em 1em;
+}
+#additional h2 {
+  font-size: 200%; 
+  padding:0.1em 0; 
+  color: #3B3C40; 
+  line-height: 1em; 
+  font-weight: 400;
+  margin: 0.5em 0 0.3em 0;
+}
+img {
+  width:100%;
+  height: auto;
+}
+#home #references,
+#home #material {
+  width:20.5em;
+  float:left;
+  margin-left: 1.5em;
+}
+#home #references .title,
+#home #material .title {
+  border:1px solid #3B3C40;
+}
+main {
+  width:44em;
+  float:left;
+}
+main article.post blockquote,
+main article.event blockquote {
+  border-radius:3px;
+  background-color: #E8E3BF;
+  padding:0.5em 1em;
+  margin:0.6em 3em;
+}
+main article.post aside.marginalia {
+  width: 8em;
+  margin-left: -8.5em;
+  height: 0;
+  overflow: visible;
+}
+main article.post header .featured-image {
+  border: 1px solid #3B3C40;
+}
+main article {
+  /* border: 1px solid red; */
+  margin:0em 0.5em 1.5em 10em;
+  position: relative;
+}
+main article#search-results,
+main article#error-page,
+main article#page,
+main div#reference,
+main #poems,
+main#material div#event,
+main#material div#events,
+main#material div#person,
+main#material div#people,
+main#material div#sources,
+main#references div {
+  margin:0em 0.5em 1.5em 1.5em;
+  position: relative;
+}
+main div#reference article {
+  margin:0;
+  clear:both;
+  padding: 0.5em 0 1em 0;
+}
+main #poems article {
+  margin:0;
+  clear:both;
+  padding: 1em 0;
+  min-height: 14em;
+}
+main #poems article h3 {
+  line-height: 1.5em;
+}
+main #poems article h2 {
+  line-height: 1.4em;
+}
+main #poems article h2 .highlight,
+main #poems article h3 .highlight,
+main #poems section h4 .highlight,
+main #poems article h2 time,
+main #poems article h3 time,
+main #poems section h4 time {
+  border: 1px solid #3B3C40;
+  border-radius: 5px;
+  padding:0 0.2em;
+  font-size: 0.7em;
+  vertical-align: bottom;
+}
+main #poems article dt,
+main #poems article dd {
+  display:inline;
+}
+main #poems article dl#media dd {
+  border: 1px solid #3B3C40;
+  border-radius: 5px;
+  padding:0 0.2em;
+  vertical-align: bottom;
+}
+main #poems article dt:after {
+  content:": ";
+}
+main #poems article section .version-links {
+  clear:both;
+  padding: 0.5em 0 1.5em 0;
+  text-align: center;
+  /*border-top:2px solid #3B3C40;*/
+}
+main #poems article section .version-links a {
+  display:block;
+  background-color:#3B3C40;
+  color: #FFF8DF;	
+  border-radius: 5px;
+  padding:0.2em 0.5em;
+  text-decoration: none;
+  border: 1px solid #3B3C40;
+}
+
+main #poems article .poem-links {
+  padding: 1em 0 0 0;
+}
+main #poems article {
+  border-bottom: 2px solid #3B3C40;
+}
+main #poems article:last-child {
+  border: none;
+}
+
+
+main #poems article .poem-links a { 
+
+}
+
+main #poems article section {
+  padding:0.5em;
+  width:19.7em;
+  background-color: #E8E3BF;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0.5em 0 0 0;
+  min-height:30em;
+  position: relative;
+}
+main #poems article section .version-links {
+  padding-bottom: 0.5em;
+  width: 19.7em;
+  position:absolute;
+  bottom:0;
+}
+main #poems article section h4 {
+  padding-bottom: 0.5em;
+}
+main #poems article section img {
+  border: 1px solid #3B3C40;
+}
+.poem-featured {
+  /* box-shadow: 5px 5px 5px #3B3C40; */
+  border:1px solid  #3B3C40;
+  float:right; 
+  margin:10px 5px 10px 10px;
+  width:35%;
+}
+.versions {
+  margin-top: 0.5em;
+}
+main #poems article .poem-links a:focus,
+main #poems article .poem-links a:hover,
+main #poems article .poem-links a:active {
+
+}
+main #poems article section .version-links a:focus,
+main #poems article section .version-links a:hover,
+main #poems article section .version-links a:active {
+  background-color: #E8E3BF;
+  color:#3B3C40;
+  border: 1px solid #3B3C40;
+}
+/*main article.event p:first-of-type:first-letter, 
+main #poems article p:first-of-type:first-letter, 
+main div#reference article table p:first-of-type:first-letter {
+  float: none;  
+  font-size: 1em; 
+  line-height: 1.3em;
+  padding:00;
+  margin:0;
+  font-weight: normal;
+  font-style: inherit;
+}*/
+.poem-description {
+  padding-bottom: 2em;
+}
+.poem-description dl {
+  padding:0.3em 0;
+}
+.poem-description dt {
+  font-weight: 400;
+  display:inline-block;
+}
+.poem-description dt:after {
+  content:":";
+} 
+.poem-description dd {
+  display: inline-block;
+}
+
+main #comments article {
+  margin: 0;
+  position: static;
+}
+#comments {
+  margin-top: 1em;
+  border:2px solid #3B3C40;
+  border-radius: 10px 10px 0 0;
+}
+#comments h3 {
+  background-color:#3B3C40;
+  color: #FFF8DF;
+  font-weight: normal;
+  font-size: 1em;
+  padding:0.5em 1em;
+  border-radius: 5px 5px 0 0;
+}
+#comments h4 {
+  font-size: 1em;
+  font-weight: 400;
+  padding-bottom: 0.5em;
+}
+#comments article {
+  padding:0.5em 1em 0;
+  background-color:#FFF8DF;
+}
+#comments article footer {
+  padding:0.1em 0 0.5em;
+  margin:0;
+  font-weight: 400;
+  font-style: italic;
+}
+#comments article footer a {
+  text-decoration: none;
+}
+#comments ol li, #comments ol ol li:first-child {
+  border-top: 1px solid #3B3C40;
+}
+
+#comments ol li:first-child {
+  border-top:none;
+}
+#comments ol ol {
+  margin:0.5em -1em 0 -1em;
+  border-left:1em solid #3B3C40;
+}
+main article h2 {
+  font-size: 300%;
+  padding:0.3em 0;
+  line-height: 1em;
+}
+main #poems h2,
+main div#reference h2,
+main#material div h2,
+main#references div h2 {
+  font-size: 300%;
+  padding:0.3em 0 0.1em 0;
+}
+main#home #poems h2 { font-size: 180%; padding:0; margin:0; color: #3B3C40; line-height: 1em; font-weight: 400; }
+main#material div h3,
+main#references div h3 {
+  font-size: 180%;
+}
+main#home #poems article {
+  padding:0;
+  border-bottom: none;
+}
+main#home #poems article .poem-links {
+  border-bottom: none;
+}
+#home #material,
+#home #references {
+  padding-bottom: 1em;
+}
+#material table,
+#references table {
+  margin: 1em 0 2em;
+  width:100%;
+}
+#home #material table,
+#home #references table {
+  margin-bottom: 0.5em;
+}
+#material .event table {
+  margin:0;
+}
+#material .person h4,
+#material .event h4 {
+  margin:0.5em 0 0.25em 0;
+}
+
+#additional .highlight,
+#material .highlight,
+#references .highlight,
+#reference .highlight {
+  border-radius: 3px;
+  border: 1px solid #3B3C40;
+  padding: 0 0.2em;
+  text-transform: capitalize;
+  font-size: 0.7em;
+  white-space: nowrap;
+}
+.filter {
+  display: inline-block;
+  padding-top: 0.3em;
+}
+ul.filter li {
+  display: inline-block;
+  margin:0 0 0.5em 0;
+}
+ul.filter li a {
+  padding:0em 0.3em;
+  text-decoration: none;
+  border: 1px solid #3B3C40;
+}
+ul.filter li a:link, ul.filter li a:visited {
+  background-color: #3B3C40;
+  color: #FFF8DF;
+}
+ul.filter li a:focus, ul.filter li a:hover, ul.filter li a:active {
+  color: #3B3C40;
+  background-color: #FFF8DF;
+}
+/* #reference .highlight {
+  border-radius: 3px;
+  border: 1px solid #3B3C40;
+  padding: 0 0.2em;
+  text-transform: capitalize;
+  font-size: 0.7em;
+  white-space: nowrap;
+  vertical-align: middle;
+} */
+#reference dl {
+  margin-top: 0.5em;
+}
+#reference dt, #reference dd {
+  display:inline-block;
+}
+#reference dt {
+  font-weight: 400;
+  margin-right: 0.3em;
+}
+#reference dd {
+  margin-right: 0.1em;
+}
+#reference dd a {
+  padding:0 0.3em;
+  border-radius: 3px;
+  background-color: #3B3C40;
+  color: #FFF8DF;
+  border:1px solid #3B3C40;
+  text-decoration: none;
+}
+#reference dd a:focus,
+#reference dd a:hover,
+#reference dd a:active {
+  color: #3B3C40;
+  background-color: #FFF8DF;
+}
+.extra {
+  height: auto;
+  vertical-align: top;
+}
+.extra iframe {
+  height: 400px;
+}
+#material a.highlight,
+#references a.highlight {
+  background-color: #3B3C40;
+  color: #FFF8DF;
+  text-decoration: none;
+  text-transform: none;
+}
+#material a.highlight:focus,
+#material a.highlight:hover,
+#material a.highlight:active,
+#references a.highlight:focus,
+#references a.highlight:hover,
+#references a.highlight:active {
+  color: #3B3C40;
+  background-color: #FFF8DF;
+}
+#material .number,
+#references .number {
+  width:3%;
+  border-right: 1px solid #FFF8DF;
+}
+#references .date {
+  width:10%;
+  border-right: 1px solid #FFF8DF;
+}
+#references .title {
+  width:62%;
+  border-right: 1px solid #FFF8DF;
+}
+#material .title {
+  width:57%;
+  border-right: 1px solid #FFF8DF;
+}
+#material .date {
+  width:15%;
+  border-right: 1px solid #FFF8DF;
+}
+#material .event-date {
+  width:15%;
+  border-right: 1px solid #FFF8DF;
+}
+#material .event-title {
+  width:90%;
+}
+#material #events-view-as {
+  display:inline-block;
+  margin-top: 0.5em;
+}
+#material #events-views {
+  display: inline-block;
+  margin-top: 0.5em;
+}
+#material #events-views li {
+  display:inline;
+}
+#material #events-views li a,
+#material #events-views li span {
+  border:1px solid #3B3C40;
+  padding:0 0.2em;
+  text-decoration: none;
+}
+#material #events-views li a:link, #material #events-views li a:visited {
+  background-color: #3B3C40;
+  color: #FFF8DF;
+}
+#material #events-views li a:focus, #material #events-views li a:hover, #material #events-views li a:active {
+  color: #3B3C40;
+  background-color: #FFF8DF;
+}
+
+#material .creators,
+#references .creators {
+  width:25%;
+}
+#material table, #material th, #material td, 
+#references table, #references th, #references td {
+  border:1px solid #3B3C40;
+}
+#material th, #material td,
+#references th, #references td {
+  padding:2px;
+  line-height: 1.5em;
+}
+#material th,
+#references th {
+  background-color: #3B3C40;
+  color: #FFF8DF;
+}
+#material td,
+#references td {
+  background-color: #FFF8DF;
+}
+#material tbody tr:nth-child(even) td,
+#references tbody tr:nth-child(even) td {
+  background-color: #E8E3BF;
+}
+#material tbody tr:hover td,
+#references tbody tr:hover td {
+  background-color: #FFFED2;
+}
+#reference table {
+  margin:1em 0;
+  width: 100%;
+}
+#reference table, #reference th, #reference td {
+  border:1px solid #3B3C40;
+}
+#details th, #details td,
+#reference th, #reference td {
+  padding:2px 0.5em;
+  line-height: 1.5em;
+}
+#details th,
+#reference th {
+  width:20%;
+  text-align: right;
+  background-color: #3B3C40;
+  color: #FFF8DF;
+  border-bottom: 1px solid #FFF8DF;
+}
+#details tr:last-child th,
+#reference tr:last-child th {
+  border-bottom: 1px solid #3B3C40;	
+}
+#details td,
+#reference td {
+  width:80%;
+  background-color: #FFF8DF;
+}
+#reference td a {
+  word-wrap: break-word;
+  /* only to links */
+  word-break: break-all;
+}
+#material th a,
+#references th a {
+  color:#FFF8DF;
+  background-color: #3B3C40;
+  text-decoration: none;
+}
+th a.order-forward {
+  background: url("../images/forward.png") no-repeat right 60%;
+  background-size: 0.8em;
+  padding-right:1em;
+}
+th a.order-reverse {
+  background: url("../images/reverse.png") no-repeat right 60%;
+  background-size: 0.8em;
+  padding-right:1em;
+}
+
+#details tr:nth-child(even) td,
+#reference table tr:nth-child(even) td {
+  background-color: #E8E3BF;
+}
+main article p {
+  padding:0.3em 0;
+  line-height: 1.3em;
+}
+/* set only to pages and posts */
+main article.post div p:first-of-type:first-letter,
+main article#page div p:first-of-type:first-letter { 
+  float: left;  
+  font-size: 300%; 
+  line-height: 0.6em;
+  padding:0.14em 0.06em 0 0;
+  margin:0;
+  font-weight: 400;
+  font-style: normal;
+}
+
+main article.post blockquote p:first-of-type:first-letter,
+main article.post aside.marginalia p:first-of-type:first-letter,
+main article#page blockquote p:first-of-type:first-letter,
+main #comments article p:first-of-type:first-letter { 
+  float: none;  
+  font-size: 1em; 
+  line-height: 1.3em;
+  padding:00;
+  margin:0;
+  font-weight: normal;
+  font-style: inherit;
+}
+main article section {
+  padding-top:0.5em;
+}
+main article section:first-of-type {
+  padding-top:0;
+}
+/* listing */
+#listing-details {
+  padding: 1em 0em 0em 10em;
+}
+#listing-details h1 { 
+  font-size: 1em;
+  padding: 0.3em 0 0.3em 0em;
+  background-size: 1.3em;	
+}
+#listing-details a {
+  text-decoration: none;
+  background-color: #3B3C40; 
+  color: #FFF8DF;
+  padding:1px 3px;
+  border:1px solid #3B3C40;
+  border-radius: 3px;
+  font-weight: normal;
+}
+#listing-details a:link, 
+#listing-details a:visited {
+  background-color: #3B3C40; 
+  color: #FFF8DF;
+}
+#listing-details a:focus, 
+#listing-details a:hover, 
+#listing-details a:active { 
+  color: #3B3C40; 
+  background-color: #FFF8DF;
+}
+#listing-details span {
+  color: #3B3C40; 
+  background-color: #FFF8DF;
+  padding:1px 3px;
+  border:1px solid #3B3C40;
+  border-radius: 3px;
+  font-weight: normal
+}
+/* article meta */
+.meta-label {
+  overflow: hidden;
+  position: absolute;
+  left:-1300px;
+  height: 1px;
+  width: 1px;
+}
+.publication-date {
+  position:absolute;
+  top:3em;
+  left:-7.5em;
+}
+.publication-date time {
+  display: block;
+  height: 4em;
+  padding:0.5em 0;
+  width:5em;
+  border-radius: 2.5em;
+  border:1px solid #666;
+  color: #FFF8DF;
+  background-color: #3B3C40;
+  /* text-shadow:
+    -1px -1px 0 #666,
+    1px -1px 0 #666,
+    -1px 1px 0 #666,
+    1px 1px 0 #666;	*/
+}
+.publication-date time .day,
+.publication-date time .month,
+.publication-date time .year {
+  display:block;
+  text-align: center;
+}
+.publication-date time a.day,
+.publication-date time a.month,
+.publication-date time a.year {
+  color:#FFF8DF;
+  text-decoration: none;
+}
+/* comments */
+#comments .publication-date {
+    position: static;
+}
+#comments .publication-date time {
+  display: inline;
+  height: auto;
+  padding:0;
+  width:auto;
+  border-radius: 0;
+  color: #3B3C40;
+  background-color: #FFF8DF;
+  border:none;
+  /* text-shadow:
+    -1px -1px 0 #666,
+    1px -1px 0 #666,
+    -1px 1px 0 #666,
+    1px 1px 0 #666;	*/
+    float:right;
+}
+#comments .publication-date time .day,
+#comments .publication-date time .month,
+#comments .publication-date time .year {
+  display:inline;
+  text-align: left;
+}
+
+
+#pagination {
+  margin:1em 0.5em 1em 10em;
+  padding: 1em 0;
+  border-top:2px solid #3B3C40;
+}
+#search-results #pagination,
+main#material div#pagination,
+main#references div#pagination {
+  margin:1em 0.5em 1.5em 0em;
+  padding: 1em 0;
+  border-top:2px solid #3B3C40;
+}
+#search-models {
+  border:1px solid #3B3C40;
+  padding:0.5em;
+}
+#search-models legend {
+  font-weight: 400;
+  padding: 0.3em 1em;
+}
+#search-models li {
+  width:30%;
+  display:inline-block;
+}
+
+main article#search-results h3 {
+  font-size: 180%;
+}
+
+#pagination ol {
+  padding-top:0.5em;
+}
+#pagination ol li {
+  display:inline-block;
+  padding:0;
+  margin:0 0.3em 0 0;
+}
+#pagination ol li a {
+  display: block;
+  border:1px solid #3B3C40;
+  padding: 0.1em 0 0 0;
+  width:1.4em;
+  height: 1.3em;
+  text-align: center;
+}
+#pagination ol li.disabled {
+  padding: 0.1em 0 0 0;
+  width:1.4em;
+  height: 1.3em;
+  text-align: center;
+}
+#pagination ol li span.selected {
+  display: block;
+  border:1px solid #3B3C40;
+  padding: 0.1em 0 0 0;
+  width:1.4em;
+  height: 1.3em;
+  text-align: center;
+  color: #FFF8DF;
+  background-color:#3B3C40;		
+}
+#pagination ol li a:link, #pagination ol li a:visited {
+  background-color: #FFF8DF;
+  color:#3B3C40;
+}
+#pagination ol li a:focus, #pagination ol li a:hover, #pagination ol li a:active {
+  color: #FFF8DF;
+  background-color:#3B3C40;	
+}
+
+header#site-header #site-search {
+  position:relative;
+  z-index: 10;
+  color:#FFF8DF;
+  background-color: #3B3C40;
+  top: 0.5em;
+  left: 44em;
+  /*height:1em;*/
+  /* width:17em; */
+  width: 14.8em;
+  padding:0.5em;
+  text-align: right;
+  /* border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em; */
+  border-radius: 0 0 5px 5px;
+  /* border: 1px solid #FFF8DF;
+  border-top:none; */
+  text-align: left;
+}
+#site-name {
+  display:block;
+  font-family: 'Coda', cursive;
+  font-size: 140%;
+  padding-bottom: 0.3em;
+}
+.search {
+  -webkit-appearance: none;
+  border-radius: 0;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 100%;
+  display:inline-block;
+  width:13em;
+  padding:0 0 0 0.3em;
+  height:28px;
+  border:1px solid #FFF8DF;
+  border-radius: 3px 0 0 3px;
+  /* border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; */
+  box-sizing: border-box;
+}
+.submit {
+  -webkit-appearance: none;
+  border-radius: 0;	
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 100%;	
+  display:inline-block;
+  vertical-align: top;
+  padding:0;
+  height:28px;
+  width:28px;
+  border:1px solid #FFF8DF;
+  border-left:none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-sizing: border-box;
+}
+#section-name {
+  display:block;
+}
+::selection {
+  color: #FFF8DF;
+  background-color:#3B3C40;
+}
+::-moz-selection { 
+  color: #FFF8DF;
+  background-color:#3B3C40;
+}
+header ::selection,
+footer ::selection {
+  background-color: #FFF8DF;
+  color:#3B3C40;
+}
+header ::-moz-selection,
+footer ::-moz-selection { 
+  background-color: #FFF8DF;
+  color:#3B3C40;
+}
+
+
+.calendar .calendar-year>a {
+  text-decoration: none;
+  font-weight: 400;
+}
+.calendar .calendar-year>a:link, .calendar .calendar-year>a:visited {
+  color:#FFF8DF;
+  background-color: #3B3C40;
+  padding: 0.2em;
+}
+.calendar .calendar-year>a:focus, .calendar .calendar-year>a:hover, .calendar .calendar-year>a:active {
+  
+}
+.quote blockquote {
+  padding-top: 1em;
+  /* text-align: justify; */
+}
+.quote blockquote p::before {
+  content:"“";
+  font-size: 5em;
+  font-style: normal;
+  height:0;
+  display:block;
+  overflow:visible;
+  margin-left: -0.4em;
+  margin-bottom: -0.2em;
+  /* text-shadow:
+    -1px -1px 0 #666;*/
+}
+.quote blockquote p {
+  font-style: italic;
+}
+.quote blockquote cite {
+  display:block;
+  text-align: right;
+}
+.quote blockquote cite::before {
+  content: "— ";
+}
+.quote .poem-line {
+  display:block;
+  margin-left:1em;
+  text-indent: -1em;
+}
+table blockquote {
+  padding-left: 1em;
+}
+
+footer#site-footer .quote {
+  width:13.7em;
+  float:right;
+  padding: 1.5em 1em 1em;
+}
+.tag {
+  display:inline;
+}
+.tag a {
+  display:inline-block;
+  padding: 0 10px 4px 24px;
+  background: url("../images/tab.png") no-repeat 0 0;
+  background-size: 1.2em;
+}
+.category {
+  border-top: 2px solid #3B3C40;
+  padding-left: 10%;
+  margin-top: 1em;
+}
+.category a { 
+  display:inline-block;
+  border: 2px solid #3B3C40;
+  border-top:none;
+  padding: 0.2em 0.5em;
+  border-radius: 0 0 5px 5px;
+  text-decoration: none;
+  background-color: #3B3C40;
+  color: #FFF8DF;	
+}
+
+.category a:focus, .category a:hover, .category a:active {
+  color: #3B3C40;
+  background-color: #FFF8DF;
+}
+.event {
+  margin:0;
+  padding:0;
+  clear:left;
+  overflow: hidden;
+}
+.person,
+.event {
+  padding:0.5em 0 1em 0;
+  clear:left;
+  overflow: hidden;
+  margin:0;
+}
+.people .person,
+.events .event {
+  margin:0;
+  padding:0.5em 0;
+  /* background-color:#E8E3BF; */
+  /*border-radius:5px;*/
+  clear:left;
+  overflow: hidden;
+  border-bottom:2px solid #3B3C40;
+}
+.person h3,
+.event h3 {
+  /* padding:0.3em 0.625em;*/
+  padding:0 0 0.3em 0;
+  font-size:1.6em;
+  font-weight:400;
+  background-color:transparent;
+  color: #3B3C40;
+}
+.person h3 a, 
+.event h3 a {
+  /*color:#FFF8DF;*/
+  text-decoration: none;
+}
+.person dl,
+.event dl {
+  padding:0 0 0 0;
+}
+.person dt,
+.event dt {
+  font-weight: 400;
+  padding:0;
+  float:left;
+  clear:left;
+}
+.person dt:after,
+.event dt:after {
+  content:":";
+}
+.person dd,
+.event dd {
+  float:left;
+  padding:0 0.2em;
+
+}
+li:last-child .person,
+li:last-child .event {
+  border-bottom:none;
+}
+main#material .people .person div, 
+main#material .events .event div {
+  clear:left;
+  margin:0;
+  padding:0;
+}
+main#material .person div, 
+main#material .event div {
+  clear:left;
+  margin:0;
+  padding:0;
+}
+main#material .person table {
+  margin:0;
+}
+article footer {
+  padding-top:1.5em;
+}
+
+.tag-label, .category-label {
+   position:absolute;
+   left:-2000px;
+   height: 0;
+   width: 0;
+}
+#recent-posts li {
+  margin-left: 1em;
+  text-indent: -1em;
+}
+#recent-posts time {
+  font-weight: 400;
+}
+
+#email {
+   padding: 0 0 4px 23px;
+   background: url("../images/email.png") no-repeat 2px 4px;
+   background-size: 0.8em; 	
+   display:block;
+}
+.twitter {
+   padding: 0 0 4px 23px;
+   background: url("../images/twitter.png") no-repeat 0 2px;
+   background-size: 1em;
+   display:block;
+}
+#googleplus {
+   padding: 0 0 4px 23px;
+   background: url("../images/g+64.png") no-repeat 0 2px;
+   background-size: 1em;
+   display:block;
+}
+#linkedin {
+   padding: 0 0 4px 23px;
+   background: url("../images/linkedin.png") no-repeat 0 2px;
+   background-size: 1em; 	
+   display:block;
+}
+/* search */
+/*
+main article#search-results p:first-of-type:first-letter { 
+  float: none;  
+  font-size: 1em; 
+  line-height: 1.3em;
+  padding:00;
+  margin:0;
+  font-weight: normal;
+  font-style: inherit;
+}*/
+main article#search-results ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding-top: 0.5em;
+}
+main article#search-results>ol>li {
+  padding: 0.5em 0;
+  line-height: 1.6em;
+}
+main article#search-results .search-result-content,
+main article#search-results .search-result-authors {
+  padding-left: 1em;
+  line-height: 1.5em;
+}
+main article#search-results .search-result-title {
+  display: inline-block;
+  padding: 0em 0 0.3em 1em;
+  text-indent: -1.2em;
+  vertical-align: top;
+  width: 85%;
+
+}
+main article#search-results .search-result-title a {
+  padding:0.1em 0.3em;
+  font-weight: 400;
+}
+main article#search-results .search-result-type,
+main article#search-results .search-result-date {
+  padding:0.1em 0.3em;
+  border: 1px solid #3B3C40;
+  border-radius: 3px;
+  font-size: 0.7em;
+  white-space: nowrap;
+}
+main article#search-results .search-result-content em {
+  background-color: #3B3C40;
+  color: #FFF8DF;	
+  padding:0 0.3em;
+}
+main article#search-results #search-form {
+  margin-bottom: 1em;
+}
+main article#search-results #search-form input[type="search"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 100%;
+  display:inline-block;
+  width:90%;
+  padding:0 0 0 0.3em;
+  height:28px;
+  border:1px solid #3B3C40;
+  border-radius: 3px 0 0 3px;
+  /* border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px; */
+  box-sizing: border-box;
+}
+main article#search-results #search-form input[type="image"] {
+  -webkit-appearance: none;
+  border-radius: 0;	
+  background-color: #3B3C40;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 100%;	
+  display:inline-block;
+  vertical-align: top;
+  padding:0;
+  height:28px;
+  width:10%;
+  border:1px solid #3B3C40;
+  border-left:none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-sizing: border-box;
+}
+
+.hidden {
+  position: absolute;
+  left: 0;
+  top: -500px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px), screen and (max-device-width: 480px) {
+  main#references,
+  main#material {
+    width:100%;
+  }
+  #home #references,
+  #home #material {
+    width:auto;
+    float:none;
+    margin-right: 1.5em;
+  }
+  header#site-header div {
+    width:100%;
+    height:auto;
+    float: none;
+    padding:0;
+  }
+  header#site-header {
+    min-width:1em;
+    height:auto;
+    float: none;
+    padding:1.5em;
+  }
+  #the-code-of-things {
+    min-width:100%;	
+    float: none;
+  }	
+  header#site-header h1 { 
+    text-align: left;
+    float: none;
+    padding:0;
+  }
+  header#site-header h1 span {
+    background: url("../images/denton.png") no-repeat right 3px;
+    background-size: 1.5em;
+    padding:3px 40px 3px 0px;	
+  }
+  header#site-header p {
+    float:none;
+    padding:0.1em 0 0.2em 1.5em;
+    float: none;
+    padding:0;
+  }
+  main {
+    width: 100%;
+    float: none;
+    padding: 0;
+    min-height: 0;
+  }
+  main article,
+  main article#search-results,
+  main article#error-page,
+  main article#page,
+  main #poems {
+    margin: 0;
+    padding: 0 1.5em 1.5em;
+  }
+  main div#reference article {
+    margin: 0;
+    padding: 0 1em 1.5em 0em;
+  }
+  main #poems article {
+    /*padding:0;*/
+  }
+  #listing-details {
+    padding: 1em 0 0 1.5em;
+  }
+  #contents {
+    width: 100%;
+    float: none;
+    padding:0;		
+  }
+  main article.post aside.marginalia {
+    height: auto;
+    width: auto;
+    margin:0.3em 0;
+    border: 1px solid #3B3C40;
+    padding:1em;
+  }
+  nav ul {
+    height: auto;
+    padding:0.5em 0 0;
+    margin:0;
+  }
+  nav ul li {
+    margin: 0;
+    padding: 0 0 0 0;
+    display:list-item;
+  }
+  nav ul li a {
+    padding:0.3em 0.3em;
+    margin: 0.1em 0;
+    display: block;
+    border:1px solid #FFF8DF;
+  }
+  #additional {
+    float: none;
+    width: 100%;
+    padding:0;
+  }
+  #additional aside {
+    padding: 0 1.5em;
+  }
+  footer#site-footer div#site-center-footer {
+    width: 100%;
+    padding:0;
+  }
+  #site-footer {
+    min-width: 1em;
+    height: auto;
+    padding:1.5em;
+    position: relative;
+    width:auto;
+  }
+  div#copyright {
+    width: 100%;
+    position: static;
+    padding:0;
+  }
+  div#contact {
+    width: 100%;
+    float: none;
+    position: static;
+    padding:0;
+  }
+  div#format {
+    width: 100%;
+    float: none;
+    position: static;
+    padding:0;
+  }
+  div#format h1 {
+    width:auto;
+    height:auto;
+    position:static;
+  }	
+  footer#site-footer {
+    margin-top:1.5em;
+  }
+
+  footer#site-footer .quote {
+    width: 100%;
+    float: none;
+    padding:0;
+  }
+  header#site-header #site-search {
+    display: inline-block;
+    position:static;
+    border:none;
+    padding:0;
+    width:100%;
+  }
+  header#site-header #site-search input[type="search"]{
+    width:90%;
+  }
+  header#site-header #site-search input[type="image"] {
+    width:10%;
+  }
+  .publication-date {
+    position: static;
+  }
+  .publication-date time {
+    display: inline;
+    height: auto;
+    padding:0;
+    width:auto;
+    border-radius: 0;
+    color: #3B3C40;
+    background-color: #FFF8DF;
+    border:none;
+    /* text-shadow:
+      -1px -1px 0 #666,
+      1px -1px 0 #666,
+      -1px 1px 0 #666,
+      1px 1px 0 #666;	*/
+      float:right;
+  }
+  .publication-date time .day,
+  .publication-date time .month,
+  .publication-date time .year {
+    display:inline;
+    text-align: left;
+  }
+  .publication-date time a.day, 
+  .publication-date time a.month, 
+  .publication-date time a.year {
+    color: #3B3C40;
+    text-decoration: none;
+  }
+
+  main #poems article section {
+    padding:0.5em;
+    width:auto;
+    background-color: #E8E3BF;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0.5em 0 0 0;
+    min-height:0em;
+    position: relative;
+  }
+  main #poems article section .version-links {
+    padding-bottom: 0.5em;
+    width: auto;
+    position:static;
+    bottom:0;
+  }
+  /* .category a {
+  position: static;
+  width: auto;
+  -webkit-transform:rotate(0deg);
+  -moz-transform:rotate(0deg);
+  transform:rotate(0deg);	
+  border-radius: 0;	
+  margin-top:1.5em;
+  } */
+  #pagination {
+    margin: 0 0 1.5em;
+    padding:1.5em;
+    border:none;
+    border-bottom:2px solid #3B3C40;
+  }
+  main#material div#pagination,
+  main#references div#pagination {
+    border-top:none;
+    margin:0;
+    padding: 0 0 1.5em 0;
+  }
+  .quote blockquote {
+    padding-left: 1.5em;
+  }
+  .quote blockquote cite {
+    text-align: left;
+    padding:1em;
+  }
+  .poem-description {
+    padding-bottom: 0em;
+  }
+}
+@media screen and (max-width: 600px), screen and (max-device-width: 480px) {
+  .poem-featured {
+    /* box-shadow: 5px 5px 5px #3B3C40; */
+    border:1px solid  #3B3C40;
+    float:none; 
+    margin: 0.5em 0;
+    width:100%;
+  }
+}
+@media screen and (max-width: 500px), screen and (max-device-width: 480px) {
+  .extra iframe {
+    height: 300px;
+  }
+}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load staticfiles wagtailimages_tags wagtailcore_tags %}
+{% block title %}{{ page.title }} | {% endblock %}
+{% image page.featured_image width-400 as featured_image %}
+{% block metadata %}
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="{{ page.title }}" />
+  <meta property="twitter:site" content="@thecodeofthings" />
+  <meta property="twitter:creator" content="@benjaminlaird" />
+  <meta property="twitter:description" content="{{ page.description }}" />{% if featured_image %}
+  <meta property="twitter:image" content="{{ featured_image }}" />{% endif %}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" /> 
+  <meta property="og:title" content="{{ page.title }}" />{% if featured_image %}
+  <meta property="og:image" content="{{ featured_image.url }}" />{% endif %}
+  <meta property="og:url" content="{{ page.full_url }}" />
+  <meta property="og:site_name" content="the code of things" />
+  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="article:published_time" content="{{ page.date|date:'c' }}" /> 
+  <meta property="article:modified_time" content="{{ page.last_published_at|date:'c' }}" /> 
+
+  <!-- Dublin Core -->
+  <meta property="dc:title" content="{{ title }}" />
+  <meta property="dc:description" content="{{ page.description }}" />
+  <meta property="dc:identifier" content="{{ page.full_url }}" />
+  {% for author in page.authors.all %}<meta property="dc:creator" content="{{ author.get_full_name }}" />
+  {% endfor %}<meta property="dc:issued" content="{{ page.date|date:'c' }}" />
+  <meta property="dc:modified" content="{{ page.last_published_at|date:'c' }}" />
+
+{% endblock %}
+{% block bodymeta %} typeof="schema:WebPage" resource="{{ page.full_url }}"{% endblock %}
+{% block main %}
+<article id="page">
+  <h2 property="schema:name">{{ page.title }}</h2>
+  <div property="schema:mainContentOfPage">{% for block in page.body %}{% include_block block %}{% endfor %}</div>
+</article>	
+{% endblock %}

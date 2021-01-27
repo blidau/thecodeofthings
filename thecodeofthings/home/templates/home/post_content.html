@@ -1,0 +1,33 @@
+{% load wagtailimages_tags wagtailcore_tags wagtailroutablepage_tags %}
+<article class="post" typeof="schema:BlogPosting" resource="{{ page.full_url }}">
+  {% image page.featured_image width-800 as featured_image %}
+  <header>
+    <h2>{% if view_type == "post" %}<span property="schema:name dc:title">{{ page.title }}</span>{% else %}<a href="{{ page.full_url }}" property="schema:name dc:title">{{ page.title }}</a>{% endif %}</h2>
+    {% if view_type == "post" %}<p>{% image page.featured_image width-800 class="featured-image" %}</p>{% endif %}
+    <dl>
+      <dt class="publication-date-label meta-label">Published</dt>
+      <dd class="publication-date"><time property="article:published_time dc:issued" content="{{ page.date|date:'c' }}" datetime="{{ page.date|date:'c' }}"><a href="{% routablepageurl page.get_parent.specific 'view_posts_by_date' page.date|date:'Y' page.date|date:'b' page.date|date:'d' %}" class="day">{{ page.date|date:"j" }}</a> <a href="{% routablepageurl page.get_parent.specific 'view_posts_by_date' page.date|date:'Y' page.date|date:'b' %}" class="month">{{ page.date|date:"F" }}</a> <a href="{% routablepageurl page.get_parent.specific 'view_posts_by_date' page.date|date:'Y' %}" class="year">{{ page.date|date:"Y" }}</a></time></dd>
+      <dt class="author-label meta-label">Author</dt>
+      {% for author in page.authors.all %}
+        <dd property="dc:creator schema:creator"{% if author.resource %} resource="{{ author.resource }}"{% endif %}>{{ author.get_full_name }}</dd>
+      {% endfor %}
+    </dl>
+  </header>
+  {% if view_type == "post" %}
+  <div property="schema:articleBody">{% for block in page.body %}{% include_block block %}{% endfor %}</div>
+  {% else %}
+  <div property="schema:description">{{ page.excerpt|richtext }}</div>
+    <p><a href="{{ page.full_url }}">Read <cite class="read-more">{{ page.title }}</cite></a></p>
+  {% endif %}
+  {% if page.tags or page.categories %}
+  <footer>
+    <!-- Categories and Tags -->
+    <dl>{% if page.tags.all or page.categories.all %}{% if page.tags.all %}
+      <dt class="tag-label" property="schema:keywords" content="{% for tag in page.tags.all %}{{tag.name}}{% if not forloop.last %}, {% endif %}{% endfor %}">Tags</dt>{% for tag in page.tags.all %}
+      <dd class="tag"><a href="{% routablepageurl page.get_parent.specific 'view_posts_by_tag' tag.slug %}">{{tag.name}}</a></dd>{% endfor %}{% endif %}{% if page.categories.all %}
+      <dt class="category-label">Filed under</dt>{% for category in page.categories.all %}
+      <dd class="category" property="dc:subject" content="{{category.name|title}}"><a href="{% routablepageurl page.get_parent.specific 'view_posts_by_category' category.slug %}">{{category.name|title}}</a></dd>{% endfor %}{% endif %}{% endif %}
+    </dl>
+  </footer>
+  {% endif %}
+</article>

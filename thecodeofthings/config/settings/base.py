@@ -25,7 +25,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "home.apps.HomeConfig",
+    "users.apps.UsersConfig",
     "search",
+    "wagtail.contrib.routable_page",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -55,7 +57,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    "wagtail.core.middleware.SiteMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -96,6 +97,9 @@ DATABASES = {
         "CONN_MAX_AGE": 600,
     }
 }
+
+# Auth user model
+AUTH_USER_MODEL = "users.User"
 
 
 # Password validation
@@ -156,12 +160,15 @@ MEDIA_URL = "/media/"
 
 
 # Wagtail settings
-
 WAGTAIL_SITE_NAME = "thecodeofthings"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = "https://thecodeofthings.com"
+
+WAGTAIL_USER_EDIT_FORM = "users.forms.UserEditForm"
+WAGTAIL_USER_CREATION_FORM = "users.forms.UserCreationForm"
+WAGTAIL_USER_CUSTOM_FIELDS = ["resource"]
 
 # Zotero
 ZOTERO_API_KEY = os.getenv("ZOTERO_API_KEY")

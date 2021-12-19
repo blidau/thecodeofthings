@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailimages_tags wagtailcore_tags %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 {% block title %}{{ page.title }} | {% endblock %}
 {% image page.featured_image width-400 as featured_image %}
 {% block metadata %}

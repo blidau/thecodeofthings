@@ -2,8 +2,9 @@ version: "3.7"
 
 services:
   db:
+    platform: linux/amd64
     container_name: thecodeofthings_db
-    image: postgres:10.9
+    image: postgres:12
     hostname: db
     env_file: development.env
     ports:
@@ -13,6 +14,7 @@ services:
 
   django:
     container_name: thecodeofthings_django
+    platform: linux/amd64
     build:
       context: "."
       args:

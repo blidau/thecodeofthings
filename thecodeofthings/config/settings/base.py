@@ -98,6 +98,9 @@ DATABASES = {
     }
 }
 
+# Auto field
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # Auth user model
 AUTH_USER_MODEL = "users.User"
 

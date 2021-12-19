@@ -190,7 +190,7 @@ class Post(wagtail_models.Page):
     def set_url_path(self, parent):
         super().set_url_path(parent=parent)
         self.url_path = self.url_path.replace(
-            self.slug, "{:%Y/%b/%d/}".format(self.date).lower() + self.slug
+            self.slug, f"{self.date:%Y/%b/%d/}{self.slug}".lower()
         )
 
 

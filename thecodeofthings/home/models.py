@@ -13,11 +13,11 @@ from wagtail.core import fields as wagtail_fields
 from wagtail.core import models as wagtail_models
 from wagtail.images import blocks as wagtail_image_blocks
 from wagtail.images import edit_handlers as wagtail_image_panels
-from wagtail.snippets import models as snippet_models
+from wagtail.snippets import models as wagtail_snippet_models
 
 
 # snippets
-@snippet_models.register_snippet
+@wagtail_snippet_models.register_snippet
 class Line(models.Model):
     """
     Random poem line returned in the header.
@@ -35,7 +35,7 @@ class Line(models.Model):
         return self.text
 
 
-@snippet_models.register_snippet
+@wagtail_snippet_models.register_snippet
 class Quote(models.Model):
     """
     Random quote.
@@ -57,7 +57,7 @@ class Quote(models.Model):
         return f"{self.source}, {self.citation}"
 
 
-@snippet_models.register_snippet
+@wagtail_snippet_models.register_snippet
 class Category(models.Model):
     """
     Category for posts and collections.

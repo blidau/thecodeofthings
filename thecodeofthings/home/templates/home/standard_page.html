@@ -8,7 +8,7 @@
   <meta property="twitter:title" content="{{ page.title }}" />
   <meta property="twitter:site" content="@thecodeofthings" />
   <meta property="twitter:creator" content="@benjaminlaird" />
-  <meta property="twitter:description" content="{{ page.description }}" />{% if featured_image %}
+  <meta property="twitter:description" content="{{ page.search_description }}" />{% if featured_image %}
   <meta property="twitter:image" content="{{ featured_image }}" />{% endif %}
 
   <!-- Open Graph -->
@@ -17,13 +17,13 @@
   <meta property="og:image" content="{{ featured_image.url }}" />{% endif %}
   <meta property="og:url" content="{{ page.full_url }}" />
   <meta property="og:site_name" content="the code of things" />
-  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="og:description" content="{{ page.search_description }}" />
   <meta property="article:published_time" content="{{ page.date|date:'c' }}" /> 
   <meta property="article:modified_time" content="{{ page.last_published_at|date:'c' }}" /> 
 
   <!-- Dublin Core -->
   <meta property="dc:title" content="{{ title }}" />
-  <meta property="dc:description" content="{{ page.description }}" />
+  <meta property="dc:description" content="{{ page.search_description }}" />
   <meta property="dc:identifier" content="{{ page.full_url }}" />
   {% for author in page.authors.all %}<meta property="dc:creator" content="{{ author.get_full_name }}" />
   {% endfor %}<meta property="dc:issued" content="{{ page.date|date:'c' }}" />

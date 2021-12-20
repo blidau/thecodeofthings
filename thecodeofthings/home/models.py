@@ -113,7 +113,6 @@ class StandardPage(wagtail_models.Page):
     A standard content page.
     """
 
-    description = models.TextField(blank=True)
     excerpt = wagtail_fields.RichTextField(blank=True)
     authors = modelcluster_fields.ParentalManyToManyField("users.User")
     date = models.DateTimeField()
@@ -133,7 +132,6 @@ class StandardPage(wagtail_models.Page):
     )
 
     content_panels = wagtail_models.Page.content_panels + [
-        wagtail_panels.FieldPanel("description"),
         wagtail_panels.FieldPanel("excerpt"),
         wagtail_panels.FieldPanel("authors"),
         wagtail_panels.FieldPanel("date"),
@@ -147,7 +145,6 @@ class Post(wagtail_models.Page):
     A standard post.
     """
 
-    description = models.TextField(blank=True)
     excerpt = wagtail_fields.RichTextField(blank=True)
     authors = modelcluster_fields.ParentalManyToManyField("users.User")
     date = models.DateTimeField()
@@ -174,7 +171,6 @@ class Post(wagtail_models.Page):
     )
 
     content_panels = wagtail_models.Page.content_panels + [
-        wagtail_panels.FieldPanel("description"),
         wagtail_panels.FieldPanel("excerpt"),
         wagtail_panels.FieldPanel("authors"),
         wagtail_panels.FieldPanel("date"),

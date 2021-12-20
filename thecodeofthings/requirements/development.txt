@@ -6,7 +6,7 @@ isort
 # linting
 flake8
 pylint
-pylint-django==2.0.6
+pylint-django
 black
 
 # testing

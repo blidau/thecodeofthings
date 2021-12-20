@@ -98,6 +98,9 @@ class SectionBlock(wagtail_blocks.StructBlock):
     heading = wagtail_blocks.CharBlock()
     content = wagtail_blocks.RichTextBlock()
 
+    class Meta:
+        template = "home/blocks/section.html"
+
 
 # pages
 class HomePage(wagtail_models.Page):

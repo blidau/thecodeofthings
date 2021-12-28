@@ -99,7 +99,7 @@ DATABASES = {
 }
 
 # Auto field
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Auth user model
 AUTH_USER_MODEL = "users.User"
@@ -172,6 +172,28 @@ BASE_URL = "https://thecodeofthings.com"
 WAGTAIL_USER_EDIT_FORM = "users.forms.UserEditForm"
 WAGTAIL_USER_CREATION_FORM = "users.forms.UserCreationForm"
 WAGTAIL_USER_CUSTOM_FIELDS = ["resource"]
+
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    "default": {
+        "WIDGET": "wagtail.admin.rich_text.DraftailRichTextArea",
+        "OPTIONS": {
+            "features": [
+                "bold",
+                "italic",
+                "link",
+                "document-link",
+                "cite",
+                "cite-essay",
+                "blockquote",
+                "ol",
+                "ul",
+                "image",
+                "embed",
+                "aside",
+            ]
+        },
+    }
+}
 
 # Zotero
 ZOTERO_API_KEY = os.getenv("ZOTERO_API_KEY")

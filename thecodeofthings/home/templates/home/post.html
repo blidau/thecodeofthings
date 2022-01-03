@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static wagtailimages_tags %}
 {% block title %}{{ page.title }} | {% endblock %}
-{% image page.featured_image width-400 as featured_image %}
 {% block metadata %}
+  {% image page.featured_image width-800 as featured_image %}
   <!-- Twitter Card -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:title" content="{{ page.title }}" />

@@ -158,12 +158,8 @@ class Post(wagtail_models.Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    tags = modelcluster_taggit.ClusterTaggableManager(
-        through="home.TaggedPost", blank=True
-    )
-    categories = modelcluster_fields.ParentalManyToManyField(
-        "home.Category", blank=True
-    )
+    tags = modelcluster_taggit.ClusterTaggableManager(through="home.TaggedPost", blank=True)
+    categories = modelcluster_fields.ParentalManyToManyField("home.Category", blank=True)
     body = wagtail_fields.StreamField(
         [
             ("heading", wagtail_blocks.CharBlock()),
@@ -188,9 +184,7 @@ class Post(wagtail_models.Page):
 
     def set_url_path(self, parent):
         super().set_url_path(parent=parent)
-        self.url_path = self.url_path.replace(
-            self.slug, f"{self.date:%Y/%b/%d/}{self.slug}".lower()
-        )
+        self.url_path = self.url_path.replace(self.slug, f"{self.date:%Y/%b/%d/}{self.slug}".lower())
 
 
 class PostIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page):
@@ -198,12 +192,27 @@ class PostIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page):
     A post index page.
     """
 
+    date_created = models.DateTimeField()
+    featured_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    content_panels = wagtail_models.Page.content_panels + [
+        wagtail_image_panels.ImageChooserPanel("featured_image"),
+        wagtail_panels.FieldPanel("date_created"),
+    ]
+
+    parent_page_types = ["home.HomePage"]
     subpage_types = ["home.Post"]
 
     def get_posts(self):
-        return Post.objects.descendant_of(self).live().order_by('-date')
+        return Post.objects.descendant_of(self).live().order_by("-date")
 
-    @routable_models.route(r'^$')
+    @routable_models.route(r"^$")
     def view_posts(self, request):
         post_paginator = paginator.Paginator(self.get_posts(), 5)
         posts_page = request.GET.get("page")
@@ -216,10 +225,13 @@ class PostIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page):
             # If page is out of range (e.g. 9999), deliver last page of results.
             posts = post_paginator.page(post_paginator.num_pages)
 
-        return self.render(request, context_overrides={
-            "title": "Posts",
-            "posts": posts,
-        })
+        return self.render(
+            request,
+            context_overrides={
+                "title": "Posts",
+                "posts": posts,
+            },
+        )
 
     @routable_models.route(r"^(?P<year>\d{4})/?$")
     @routable_models.route(r"^(?P<year>\d{4})/(?P<month>(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec))/?$")
@@ -252,10 +264,13 @@ class PostIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page):
         except paginator.EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of results.
             posts = post_paginator.page(post_paginator.num_pages)
-        return self.render(request, context_overrides={
-            "title": title,
-            "posts": posts,
-        })
+        return self.render(
+            request,
+            context_overrides={
+                "title": title,
+                "posts": posts,
+            },
+        )
 
     @routable_models.route(r"^tag/(?P<tag_slug>[\w-]+)/?$")
     def view_posts_by_tag(self, request, tag_slug):
@@ -267,25 +282,28 @@ class PostIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page):
             tags=tag,
         )
         title = f"Posts for tag | {tag.name}"
-        return self.render(request, context_overrides={
-            "title": title,
-            "posts": posts,
-        })
+        return self.render(
+            request,
+            context_overrides={
+                "title": title,
+                "posts": posts,
+            },
+        )
 
     @routable_models.route(r"^category/(?P<category_slug>[\w-]+)/?$")
     def view_posts_by_category(self, request, category_slug):
-        category = shortcuts.get_object_or_404(
-            Category,
-            slug=category_slug
-        )
+        category = shortcuts.get_object_or_404(Category, slug=category_slug)
         posts = self.get_posts().filter(
             categories=category,
         )
         title = f"Posts for category | {category.name}"
-        return self.render(request, context_overrides={
-            "title": title,
-            "posts": posts,
-        })
+        return self.render(
+            request,
+            context_overrides={
+                "title": title,
+                "posts": posts,
+            },
+        )
 
     @routable_models.route(
         r"^(?P<year>\d{4})/(?P<month>(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec))"
@@ -297,6 +315,6 @@ class PostIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page):
             date__year=year,
             date__month=datetime.datetime.strptime(month, "%b").month,
             date__day=day,
-            slug=post_slug
+            slug=post_slug,
         )
         return post.serve(request)

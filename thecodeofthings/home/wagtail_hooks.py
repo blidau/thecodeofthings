@@ -92,7 +92,9 @@ def register_aside_essay_feature(features):
 
     # Call register_editor_plugin to register the configuration for Draftail.
     features.register_editor_plugin(
-        "draftail", feature_name, draftail_features.BlockFeature(control, css={"all": ["admin/css/aside.css"]})
+        "draftail",
+        feature_name,
+        draftail_features.BlockFeature(control, css={"all": ["admin/css/aside.css"]}),
     )
 
     # Configure the content transform from the DB to the editor and back.

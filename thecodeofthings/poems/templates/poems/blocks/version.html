@@ -1,0 +1,14 @@
+{% load wagtailimages_tags %}
+<section>
+  <h4>{{ value.title }} <time>{{ value.date_modified|date:"Y" }}</time></h4>
+  <div class="poem-image">{% if value.featured_image %}{% image value.featured_image width-800 %}{% endif %}</div>
+  <div class="poem-description">{{ value.description|safe }}
+  {% if value.date_released %}
+  <dl>
+    <dt>Date released</dt>
+    <dd>{{ value.date_released|date:"j F Y" }}</dd>
+  </dl>
+  {% endif %}
+  </div>
+  <div class="value-links"><a href="{{ value.link }}">Read {{ value.title }}</a></div>
+</section>

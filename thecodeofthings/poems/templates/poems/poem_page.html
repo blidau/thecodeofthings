@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block title %}{{ page.title }} | {% endblock %}
+{% block metadata %}
+  {% image page.featured_image width-800 as featured_image %}
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="{{ page.title }}" />
+  <meta property="twitter:site" content="@thecodeofthings" />
+  <meta property="twitter:creator" content="@benjaminlaird" />
+  <meta property="twitter:description" content="{{ page.search_description|striptags|truncatechars:200}}" />{% if featured_image %}
+  <meta property="twitter:image" content="{{ featured_image.url }}" />{% endif %}
+
+  <!-- Dublin Core -->
+  <meta property="dc:title" content="{{ page.title }}" />
+  <meta property="dc:description" content="{{ page.search_description|striptags|truncatechars:200}}" />
+  <meta property="dc:identifier" content="{{ page.full_url }}" />
+  {% for author in page.authors.all %}<meta property="dc:creator" content="{{ author.get_full_name }}" />
+  {% endfor %}<meta property="dc:issued" content="{{ page.date_created|date:'c' }}" />
+  <meta property="dc:modified" content="{{ page.last_published_at|date:'c' }}" />
+{% endblock %}
+{% block main %}
+<div id="poems">
+<article>
+<h2>{{ page.title }} <time>{{ page.date_created|date:"Y" }}</time></h2>
+{% if page.featured_image %}{% image page.featured_image width-800 class="page-featured" %}{% endif %}
+{% if page.mediums.all %}
+<dl id="media">
+<dt>Media</dt>
+{% for medium in page.mediums.all %}
+<dd>{{ medium.name }}</dd>{% endfor %}
+</dl>
+{% endif %}
+{{ page.description|richtext }}
+{% if page.versions %}
+<h3 class="versions">Versions</h3>
+{% for block in page.versions %}{% include_block block %}{% endfor %}
+{% endif %}
+</article>
+</div>
+{% endblock %}

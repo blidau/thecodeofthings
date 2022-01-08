@@ -27,7 +27,7 @@
         <h1><a href="/">the code of things</a></h1>
         <p>Biographical Poetry in Print and Programmable Media</p>
         <nav id="site-nav">
-          {% with nav_items=current_site.root_page.get_children.live.in_menu %}
+          {% with nav_items=current_site.root_page.get_children.live.public.in_menu %}
           <ul>
             <li><a {% if "/" == request.path %}class="current" {% endif %}href="/">Home</a></li>{% for nav_item in nav_items %}<li>
               <a {% if nav_item.url in request.path %}class="current" {% endif %}href="{{ nav_item.url }}">{{ nav_item.title }}</a>

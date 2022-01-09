@@ -1,0 +1,18 @@
+{% load wagtailroutablepage_tags %}
+{% if recent_posts %}
+<aside id="recent-posts">
+    <h2>Recent Posts</h2>
+    <ul>{% for recent_post in recent_posts %}
+        <li><a href="{{ recent_post.full_url }}">{{ recent_post.title }}</a> <time class="highlight" datetime="{{ recent_post.date|date:'c' }}">{{ recent_post.date|date:"Y.m.d" }}</time></li>{% endfor %}
+    </ul>
+</aside>{% endif %}{% if categories %}
+<aside>
+    <h2>Categories</h2>
+    <ul>{% for category in categories %}
+        <li><a href="{% routablepageurl blog_page 'view_posts_by_category' category.slug %}">{{ category.name|title }}</a></li>{% endfor %}
+    </ul>
+</aside>{% endif %}
+<aside>
+    <h2>Follow</h2>
+    <p><a class="twitter" href="https://twitter.com/thecodeofthings">@thecodeofthings</a></p>
+</aside>

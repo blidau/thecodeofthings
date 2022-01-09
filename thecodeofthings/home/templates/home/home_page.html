@@ -1,8 +1,13 @@
 {% extends "base.html" %}
-{% load static %}
+{% load wagtailcore_tags static %}
 
 {% block body_class %}template-homepage{% endblock %}
-
-{% block extra_css %}{% endblock extra_css %}
-
-{% block content %}{% endblock content %}
+{% block extra_css %}{% endblock %}
+{% block content %}{% endblock %}
+{% block additional %}
+<aside>
+    <h2>About</h2>
+    {{ about_page.excerpt|richtext }}
+    <p><a href="{{ about_page.full_url }}">Read a longer statement</a></p>
+</aside>
+{% include "blog/includes/sidebar.html" %}{% endblock %}

@@ -43,7 +43,7 @@
         {% block main %}{% endblock %}
       </main>
       {% block additionalwrap %}<div id="additional">
-        {% block additional %}{% endblock %}
+        {% block additional %}{% include "blog/includes/sidebar.html" %}{% endblock %}
       </div>{% endblock %}
       {% endblock %}
     </div>

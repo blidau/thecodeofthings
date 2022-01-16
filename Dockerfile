@@ -27,3 +27,7 @@ COPY ./thecodeofthings/ /code/
 WORKDIR /code/
 
 COPY ./thecodeofthings/scripts/entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+COPY ./thecodeofthings/scripts/production.sh /production.sh
+CMD ["/production.sh"]

@@ -12,6 +12,9 @@ done
 echo "Apply database migrations."
 python manage.py migrate
 
+echo "Collect static."
+python manage.py collectstatic --noinput
+
 # Run command
 echo "Running: $@"
 exec "$@"

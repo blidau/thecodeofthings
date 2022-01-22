@@ -131,4 +131,7 @@ dmypy.json
 /data/
 
 # media
-*/media/
+/thecodeofthings/media/
+
+# static
+/thecodeofthings/static/

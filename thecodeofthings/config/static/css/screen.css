@@ -1272,12 +1272,6 @@ article footer {
    background-size: 1em;
    display:block;
 }
-#googleplus {
-   padding: 0 0 4px 23px;
-   background: url("../images/g+64.png") no-repeat 0 2px;
-   background-size: 1em;
-   display:block;
-}
 #linkedin {
    padding: 0 0 4px 23px;
    background: url("../images/linkedin.png") no-repeat 0 2px;

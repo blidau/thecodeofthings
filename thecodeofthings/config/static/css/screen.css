@@ -386,7 +386,6 @@ main #poems article section .version-links a {
   text-decoration: none;
   border: 1px solid #3B3C40;
 }
-
 main #poems article .poem-links {
   padding: 1em 0 0 0;
 }
@@ -396,12 +395,6 @@ main #poems article {
 main #poems article:last-child {
   border: none;
 }
-
-
-main #poems article .poem-links a { 
-
-}
-
 main #poems article section {
   padding:0.5em;
   width:19.7em;
@@ -434,11 +427,6 @@ main #poems article section img {
 }
 .versions {
   margin-top: 0.5em;
-}
-main #poems article .poem-links a:focus,
-main #poems article .poem-links a:hover,
-main #poems article .poem-links a:active {
-
 }
 main #poems article section .version-links a:focus,
 main #poems article section .version-links a:hover,
@@ -1082,8 +1070,6 @@ footer ::-moz-selection {
   background-color: #FFF8DF;
   color:#3B3C40;
 }
-
-
 .calendar .calendar-year>a {
   text-decoration: none;
   font-weight: 400;
@@ -1092,9 +1078,6 @@ footer ::-moz-selection {
   color:#FFF8DF;
   background-color: #3B3C40;
   padding: 0.2em;
-}
-.calendar .calendar-year>a:focus, .calendar .calendar-year>a:hover, .calendar .calendar-year>a:active {
-  
 }
 .quote blockquote {
   padding-top: 1em;
@@ -1434,9 +1417,6 @@ main article#search-results #search-form input[type="image"] {
     margin: 0;
     padding: 0 1em 1.5em 0em;
   }
-  main #poems article {
-    /*padding:0;*/
-  }
   #listing-details {
     padding: 1em 0 0 1.5em;
   }
@@ -1512,7 +1492,6 @@ main article#search-results #search-form input[type="image"] {
   footer#site-footer {
     margin-top:1.5em;
   }
-
   footer#site-footer .quote {
     width: 100%;
     float: none;
@@ -1562,7 +1541,6 @@ main article#search-results #search-form input[type="image"] {
     color: #3B3C40;
     text-decoration: none;
   }
-
   main #poems article section {
     padding:0.5em;
     width:auto;

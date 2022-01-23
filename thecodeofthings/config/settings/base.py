@@ -162,9 +162,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_HOST = os.getenv("DJANGO_STATIC_HOST", "")
 STATIC_URL = STATIC_HOST + "/static/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = "/media/"
-
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "thecodeofthings"

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% load static wagtailimages_tags wagtailcore_tags %}
 {% block title %}{{ page.title }} | {% endblock %}
-{% image page.featured_image width-400 as featured_image %}
 {% block metadata %}
+  {% image page.featured_image width-800 as featured_image %}
   <!-- Twitter Card -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:title" content="{{ page.title }}" />
   <meta property="twitter:site" content="@thecodeofthings" />
   {% for author in page.authors.all %}{% if author.twitter_username %}<meta property="twitter:creator" content="@{{ author.twitter_username }}" />
   {% endif %}{% endfor %}<meta property="twitter:description" content="{{ page.search_description }}" />{% if featured_image %}
-  <meta property="twitter:image" content="{{ featured_image }}" />{% endif %}
+  <meta property="twitter:image" content="{{ featured_image.url }}" />{% endif %}
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" /> 

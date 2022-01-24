@@ -22,7 +22,7 @@
   <meta property="article:modified_time" content="{{ page.last_published_at|date:'c' }}" /> 
 
   <!-- Dublin Core -->
-  <meta property="dc:title" content="{{ title }}" />
+  <meta property="dc:title" content="{{ page.title }}" />
   <meta property="dc:description" content="{{ page.search_description }}" />
   <meta property="dc:identifier" content="{{ page.full_url }}" />
   {% for author in page.authors.all %}<meta property="dc:creator" content="{{ author.get_full_name }}" />

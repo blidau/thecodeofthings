@@ -7,8 +7,8 @@
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:title" content="{{ page.title }}" />
   <meta property="twitter:site" content="@thecodeofthings" />
-  <meta property="twitter:creator" content="@benjaminlaird" />
-  <meta property="twitter:description" content="{{ page.search_description|striptags|truncatechars:200}}" />{% if featured_image %}
+  {% for author in page.authors.all %}{% if author.twitter_username %}<meta property="twitter:creator" content="@{{ author.twitter_username }}" />
+  {% endif %}{% endfor %}<meta property="twitter:description" content="{{ page.search_description|striptags|truncatechars:200}}" />{% if featured_image %}
   <meta property="twitter:image" content="{{ featured_image.url }}" />{% endif %}
 
   <!-- Open Graph -->

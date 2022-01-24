@@ -172,7 +172,7 @@ BASE_URL = "https://thecodeofthings.com"
 
 WAGTAIL_USER_EDIT_FORM = "users.forms.UserEditForm"
 WAGTAIL_USER_CREATION_FORM = "users.forms.UserCreationForm"
-WAGTAIL_USER_CUSTOM_FIELDS = ["resource"]
+WAGTAIL_USER_CUSTOM_FIELDS = ["resource", "twitter_username"]
 
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     "default": {

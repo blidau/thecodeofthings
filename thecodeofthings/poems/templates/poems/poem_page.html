@@ -23,7 +23,7 @@
 <div id="poems">
 <article>
 <h2>{{ page.title }} <time>{{ page.date_created|date:"Y" }}</time></h2>
-{% if page.featured_image %}{% image page.featured_image width-800 class="page-featured" %}{% endif %}
+{% if page.featured_image %}{% image page.featured_image width-800 class="poem-featured" %}{% endif %}
 {% if page.mediums.all %}
 <dl id="media">
 <dt>Media</dt>

@@ -181,6 +181,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
             "features": [
                 "bold",
                 "italic",
+                "em",
                 "link",
                 "document-link",
                 "cite",

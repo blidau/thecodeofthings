@@ -57,7 +57,7 @@ cite.essay::after {
   content:"”";
 }
 
-i {
+i, em {
   font-style: italic;
 }
 b {

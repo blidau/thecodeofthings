@@ -37,7 +37,7 @@ class VersionBlock(wagtail_blocks.StructBlock):
     """
 
     title = wagtail_blocks.CharBlock()
-    description = wagtail_blocks.RichTextBlock()
+    description = wagtail_blocks.RichTextBlock(required=False)
     featured_image = wagtail_image_blocks.ImageChooserBlock(required=False)
     date_created = wagtail_blocks.DateTimeBlock()
     date_released = wagtail_blocks.DateTimeBlock(required=False)

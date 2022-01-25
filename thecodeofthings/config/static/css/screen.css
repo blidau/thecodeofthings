@@ -57,6 +57,13 @@ cite.essay::after {
   content:"”";
 }
 
+i {
+  font-style: italic;
+}
+b {
+  font-weight: bold;
+}
+
 header#site-header {
   color:#FFF8DF;
   /* background-color: #055A10; */

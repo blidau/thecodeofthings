@@ -6,7 +6,7 @@
 {% block main %}
 <div id="poems">
 <h2>{{ page.title }}</h2>
-{% for poem in page.get_children.specific %}
+{% for poem in page.get_children.specific reversed %}
 <article>
 <h3><a href="{{ poem.full_url }}">{{ poem.title }}</a> <time>{{ poem.date_created|date:"Y" }}</time>{% if poem.mediums.all %} {% for medium in poem.mediums.all %}<span class="highlight">{{ medium.name }}</span> {% endfor %}{% endif %}</h3>
   {% if poem.featured_image %}{% image poem.featured_image width-800 class="poem-featured" %}{% endif %}

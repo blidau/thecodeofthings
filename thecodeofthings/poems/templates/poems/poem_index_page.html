@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block title %}{{ title|safe }} | {% endblock %}
+{% block title %}{{ page.title }} | {% endblock %}
 {% block metadata %}{% endblock %}
 {% block main %}
 <div id="poems">

@@ -61,8 +61,5 @@ class HomePage(wagtail_models.Page):
         context = super().get_context(request, *args, **kwargs)
         context["about_page"] = blog_models.StandardPage.objects.live().public().filter(title="About").first()
         context["poem"] = poems_models.PoemPage.objects.live().public().order_by("-date_created").first()
-        context["references_page"] = references_models.ReferenceIndexPage.objects.live().public().first()
-        context["references"] = references_models.Reference.objects.exclude(collections__hidden=True).order_by(
-            "-date_modified"
-        )[:5]
+        context["references_pages"] = references_models.ReferenceIndexPage.objects.live().public()
         return context

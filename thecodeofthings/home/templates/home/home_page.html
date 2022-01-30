@@ -50,9 +50,9 @@
   <p><a href="{{ poem.get_parent.full_url }}">View all poems</a></p>
 </section>
 {% endif %}
-{% if references_page %}
-<section id="references">
-  <h2>References</h2>
+{% for references_page in references_pages %}
+<section id="{{ references_page.slug }}">
+  <h2>{{ references_page.title }}</h2>
   <table>
     <thead>
       <tr>
@@ -60,7 +60,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for reference in references %}
+      {% for reference in references_page.get_references|slice:":5" %}
       <tr>
         <td><a href="{% routablepageurl references_page 'view_reference' reference.key %}">{{ reference.title }}</a>
           {% for role in reference.role_set.all %} <a href="{% routablepageurl references_page 'view_creator_references' role.creator.slug %}"
@@ -73,9 +73,9 @@
       {% endfor %}
     </tbody>
   </table>
-  <p><a href="{% routablepageurl references_page 'view_references' %}">View all references</a></p>
+  <p><a href="{% routablepageurl references_page 'view_references' %}">View all {{ references_page.title|lower }}</a></p>
 </section>
-{% endif %}
+{% endfor %}
 {% endblock %}
 {% block additional %}
 {% if about_page %}

@@ -4,7 +4,7 @@
 {% block metadata %}{% endblock %}
 {% block main_additional %} id="references"{% endblock %}
 {% block main %}
-{% if collections %}<ul id="secondary-nav">
+{% if collections and not page.research %}<ul id="secondary-nav">
   {% for collection in collections %}<li><a {% if collection.category.slug in current %}class="current" {% endif %}href="{% routablepageurl page 'view_references' collection.category.slug %}">{{collection.name|title}}</a></li>{% endfor %}
   </ul>{% endif %}
   <div>

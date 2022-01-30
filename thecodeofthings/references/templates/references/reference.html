@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% load wagtailroutablepage_tags references_tags %}
-{% block title %}{{ title }} | Reference | {% endblock %}
+{% block title %}{{ reference.title }} | {{ page.title }} | {% endblock %}
 {% block metadata %}{% endblock %}
 
 {% block main %}
-{% if collections %}<ul id="secondary-nav">
+{% if collections and not page.research %}<ul id="secondary-nav">
 {% for collection in collections %}<li><a href="{% routablepageurl page 'view_references' collection.category.slug %}">{{collection.name|title }}</a></li>{% endfor %}
 </ul>{% endif %}
 <div id="reference">
-<h2>Reference</h2>
+<h2>{{ page.title }}</h2>
 <article>
   <header>
     <h3>{{ reference.title }} <span class="highlight">{{ reference.get_item_type_display }}</span></h3>
-    <dl>
+    {% if not page.research %}<dl>
     <dt>Collections</dt>
     {% for collection in reference.collections.all %}{% if not collection.hidden %}<dd><a href="{% routablepageurl page 'view_references' collection.category.slug %}">{{collection.name|title }}</a></dd>{% endif %}{% endfor %}
-    </dl>
+    </dl>{% endif %}
   </header>
   <table>
     <tr><th>Type</th><td>{{ reference.get_item_type_display }}</td></tr>

@@ -147,14 +147,30 @@ class ReferenceIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page)
         on_delete=models.SET_NULL,
         related_name="+",
     )
+    research = models.BooleanField(blank=False, default=False)
 
     content_panels = wagtail_models.Page.content_panels + [
         wagtail_image_panels.ImageChooserPanel("featured_image"),
         wagtail_panels.FieldPanel("date_created"),
+        wagtail_panels.FieldPanel("research"),
     ]
 
     parent_page_types = ["home.HomePage"]
     subpage_types = []
+
+    def get_references(self):
+        if self.research:
+            references = Reference.objects.exclude(collections__research=False).order_by("-date_modified")
+        else:
+            references = Reference.objects.exclude(collections__hidden=True).order_by("-date_modified")
+        return references
+
+    def get_collections(self):
+        if self.research:
+            collections = Collection.objects.select_related("category").exclude(research=False)
+        else:
+            collections = Collection.objects.select_related("category").exclude(hidden=True)
+        return collections
 
     @routable_models.route(r"^$")
     @routable_models.route(r"^collections/(?P<category_slug>[\w-]+)/$")
@@ -162,10 +178,11 @@ class ReferenceIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page)
     @routable_models.route(
         r"^collections/(?P<category_slug>[\w-]+)/(?P<first_filter>[\w-]+)/(?P<second_filter>[\w-]+)/$"
     )
-    @routable_models.route(r"^collections/creators/(?P<creator_slug>[\w-]+)/$", name="view_creator_references")
+    @routable_models.route(r"^creators/(?P<creator_slug>[\w-]+)/$", name="view_creator_references")
     def view_references(self, request, creator_slug=None, category_slug=None, first_filter=None, second_filter=None):
-        collections = Collection.objects.select_related("category").filter(hidden=False)
-        all_references = Reference.objects.exclude(collections__hidden=True)
+        all_references = self.get_references().order_by("title")
+        collections = self.get_collections()
+
         title = self.title
         current = []
 
@@ -234,14 +251,14 @@ class ReferenceIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page)
 
     @routable_models.route(r"^(?P<reference_key>[\w-]+)/$")
     def view_reference(self, request, reference_key):
-        reference = shortcuts.get_object_or_404(
-            Reference.objects.filter(collections__hidden=False).order_by("key").distinct("key"), key=reference_key
-        )
+        all_references = self.get_references()
+        collections = self.get_collections()
+        reference = shortcuts.get_object_or_404(all_references.order_by("key").distinct("key"), key=reference_key)
         return self.render(
             request,
             context_overrides={
                 "reference": reference,
-                "collections": Collection.objects.select_related("category").filter(hidden=False),
+                "collections": collections,
             },
             template="references/reference.html",
         )

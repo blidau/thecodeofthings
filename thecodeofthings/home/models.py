@@ -5,6 +5,7 @@ from wagtail.snippets import models as wagtail_snippet_models
 
 from blog import models as blog_models
 from poems import models as poems_models
+from references import models as references_models
 
 
 # snippets
@@ -60,4 +61,8 @@ class HomePage(wagtail_models.Page):
         context = super().get_context(request, *args, **kwargs)
         context["about_page"] = blog_models.StandardPage.objects.live().public().filter(title="About").first()
         context["poem"] = poems_models.PoemPage.objects.live().public().order_by("-date_created").first()
+        context["references_page"] = references_models.ReferenceIndexPage.objects.live().public().first()
+        context["references"] = references_models.Reference.objects.exclude(collections__hidden=True).order_by(
+            "-date_modified"
+        )[:5]
         return context

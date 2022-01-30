@@ -1,58 +1,88 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags wagtailcore_tags static %}
+{% load wagtailimages_tags wagtailcore_tags wagtailroutablepage_tags static %}
 
 {% block metadata %}
-    <!-- Generic -->
-    <meta name="description" content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, a 19th-century scientific lecturer, Spiritualist and radical." />
-    <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:title" content="the code of things" />
-    <meta property="twitter:site" content="@thecodeofthings" />
-    <meta property="twitter:description" content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, 19th-century scientific lecturer, Spiritualist and radical." />
-    <meta property="twitter:image" content="{% static 'images/william-denton.png' %}" />
+<!-- Generic -->
+<meta name="description"
+  content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, a 19th-century scientific lecturer, Spiritualist and radical." />
+<!-- Twitter Card -->
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:title" content="the code of things" />
+<meta property="twitter:site" content="@thecodeofthings" />
+<meta property="twitter:description"
+  content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, 19th-century scientific lecturer, Spiritualist and radical." />
+<meta property="twitter:image" content="{% static 'images/william-denton.png' %}" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" /> 
-    <meta property="og:title" content="the code of things" />
-    <meta property="og:image" content="{% static 'images/william-denton.png' %}" />
-    <meta property="og:url" content="https://thecodeofthings.com" />
-    <meta property="og:site_name" content="the code of things" />
-    <meta property="og:description" content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, a 19th-century scientific lecturer, Spiritualist and radical." />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="the code of things" />
+<meta property="og:image" content="{% static 'images/william-denton.png' %}" />
+<meta property="og:url" content="https://thecodeofthings.com" />
+<meta property="og:site_name" content="the code of things" />
+<meta property="og:description"
+  content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, a 19th-century scientific lecturer, Spiritualist and radical." />
 
-    <!-- Dublin Core -->
-    <meta property="dc:title" content="the code of things" />
-    <meta property="dc:description" content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, a 19th-century scientific lecturer, Spiritualist and radical." />
-    <meta property="dc:identifier" content="https://thecodeofthings.com" />
-    <meta property="dc:creator" content="Benjamin Laird" />
+<!-- Dublin Core -->
+<meta property="dc:title" content="the code of things" />
+<meta property="dc:description"
+  content="Researching biographical poetry in print and programmable media through writing a collection of poems about William Denton, a 19th-century scientific lecturer, Spiritualist and radical." />
+<meta property="dc:identifier" content="https://thecodeofthings.com" />
+<meta property="dc:creator" content="Benjamin Laird" />
 {% endblock %}
 
 {% block main_additional %} id="home"{% endblock %}
 {% block main %}
-    {% if recent_posts %}
-        {% with recent_posts|first as post %}
-        <section>
-        {% include "blog/post_content.html" with view_type="home" page=post %}
-        </section>
-        {% endwith %}
-    {% endif %}
-    {% if poem %}
-        <section id="poems">
-            <article>
-                <h2><a href="{{ poem.full_url }}">{{ poem.title }}</a> <time>{{ poem.date_created|date:"Y" }}</time></h2>
-                {% if poem.featured_image %}{% image poem.featured_image width-800 class="poem-featured" %}{% endif %}
-                {{ poem.description|richtext|truncatewords_html:100 }}
-                <div class="poem-links"><a href="{{ poem.full_url }}">View all versions of <cite>{{poem.title}}</cite></a></div>
-            </article>
-            <p><a href="{{ poem.get_parent.full_url }}">View all poems</a></p>
-        </section>
-    {% endif %}
+{% if recent_posts %}
+{% with recent_posts|first as post %}
+<section>
+  {% include "blog/post_content.html" with view_type="home" page=post %}
+</section>
+{% endwith %}
+{% endif %}
+{% if poem %}
+<section id="poems">
+  <article>
+    <h2><a href="{{ poem.full_url }}">{{ poem.title }}</a> <time>{{ poem.date_created|date:"Y" }}</time></h2>
+    {% if poem.featured_image %}{% image poem.featured_image width-800 class="poem-featured" %}{% endif %}
+    {{ poem.description|richtext|truncatewords_html:100 }}
+    <div class="poem-links"><a href="{{ poem.full_url }}">View all versions of <cite>{{poem.title}}</cite></a></div>
+  </article>
+  <p><a href="{{ poem.get_parent.full_url }}">View all poems</a></p>
+</section>
+{% endif %}
+{% if references_page %}
+<section id="references">
+  <h2>References</h2>
+  <table>
+    <thead>
+      <tr>
+        <th class="title">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reference in references %}
+      <tr>
+        <td><a href="{% routablepageurl references_page 'view_reference' reference.key %}">{{ reference.title }}</a>
+          {% for role in reference.role_set.all %} <a href="{% routablepageurl references_page 'view_creator_references' role.creator.slug %}"
+            class="highlight">{{ role.creator }}</a>{% endfor %} 
+            <span class="highlight">{{ reference.get_item_type_display }}</span>
+            {% for collection in reference.collections.all %}{% if not collection.hidden %} <a href="{% routablepageurl references_page 'view_references' collection.category.slug %}"
+                class="highlight">{{ collection.name|title }}</a>{% endif %}{% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><a href="{% routablepageurl references_page 'view_references' %}">View all references</a></p>
+</section>
+{% endif %}
 {% endblock %}
 {% block additional %}
-    {% if about_page %}
-        <aside>
-            <h2>About</h2>
-            {{ about_page.excerpt|richtext }}
-            <p><a href="{{ about_page.full_url }}">Read a longer statement</a></p>
-        </aside>
-    {% endif %}
+{% if about_page %}
+<aside>
+  <h2>About</h2>
+  {{ about_page.excerpt|richtext }}
+  <p><a href="{{ about_page.full_url }}">Read a longer statement</a></p>
+</aside>
+{% endif %}
 {% include "blog/includes/sidebar.html" %}{% endblock %}

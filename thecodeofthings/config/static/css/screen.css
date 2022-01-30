@@ -288,12 +288,14 @@ img {
   height: auto;
 }
 #home #references,
+#home #sources,
 #home #material {
   width:20.5em;
   float:left;
   margin-left: 1.5em;
 }
 #home #references .title,
+#home #sources .title,
 #home #material .title {
   border:1px solid #3B3C40;
 }
@@ -541,15 +543,18 @@ main#home #poems article .poem-links {
   border-bottom: none;
 }
 #home #material,
+#home #sources,
 #home #references {
   padding-bottom: 1em;
 }
 #material table,
+#sources table,
 #references table {
   margin: 1em 0 2em;
   width:100%;
 }
 #home #material table,
+#home #sources table,
 #home #references table {
   margin-bottom: 0.5em;
 }
@@ -563,6 +568,7 @@ main#home #poems article .poem-links {
 
 #additional .highlight,
 #material .highlight,
+#sources .highlight,
 #references .highlight,
 #reference .highlight {
   border-radius: 3px;
@@ -637,6 +643,7 @@ ul.filter li a:focus, ul.filter li a:hover, ul.filter li a:active {
   height: 400px;
 }
 #material a.highlight,
+#sources a.highlight,
 #references a.highlight {
   background-color: #3B3C40;
   color: #FFF8DF;
@@ -646,6 +653,9 @@ ul.filter li a:focus, ul.filter li a:hover, ul.filter li a:active {
 #material a.highlight:focus,
 #material a.highlight:hover,
 #material a.highlight:active,
+#sources a.highlight:focus,
+#sources a.highlight:hover,
+#sources a.highlight:active,
 #references a.highlight:focus,
 #references a.highlight:hover,
 #references a.highlight:active {
@@ -653,6 +663,7 @@ ul.filter li a:focus, ul.filter li a:hover, ul.filter li a:active {
   background-color: #FFF8DF;
 }
 #material .number,
+#sources .number,
 #references .number {
   width:3%;
   border-right: 1px solid #FFF8DF;
@@ -707,32 +718,39 @@ ul.filter li a:focus, ul.filter li a:hover, ul.filter li a:active {
 }
 
 #material .creators,
+#sources .creators,
 #references .creators {
   width:25%;
 }
-#material table, #material th, #material td, 
+#material table, #material th, #material td,
+#sources table, #sources th, #sources td,
 #references table, #references th, #references td {
   border:1px solid #3B3C40;
 }
 #material th, #material td,
+#sources th, #sources td,
 #references th, #references td {
   padding:2px;
   line-height: 1.5em;
 }
 #material th,
+#sources th,
 #references th {
   background-color: #3B3C40;
   color: #FFF8DF;
 }
 #material td,
+#sources td,
 #references td {
   background-color: #FFF8DF;
 }
 #material tbody tr:nth-child(even) td,
+#sources tbody tr:nth-child(even) td,
 #references tbody tr:nth-child(even) td {
   background-color: #E8E3BF;
 }
 #material tbody tr:hover td,
+#sources tbody tr:hover td,
 #references tbody tr:hover td {
   background-color: #FFFED2;
 }
@@ -1369,6 +1387,7 @@ main article#search-results #search-form input[type="image"] {
     width:100%;
   }
   #home #references,
+  #home #sources,
   #home #material {
     width:auto;
     float:none;

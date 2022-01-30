@@ -155,7 +155,7 @@ class ReferenceIndexPage(routable_models.RoutablePageMixin, wagtail_models.Page)
         wagtail_panels.FieldPanel("research"),
     ]
 
-    parent_page_types = ["home.HomePage"]
+    parent_page_types = ["home.HomePage", "materials.MaterialIndexPage"]
     subpage_types = []
 
     def get_references(self):

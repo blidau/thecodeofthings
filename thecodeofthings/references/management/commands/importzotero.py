@@ -60,11 +60,15 @@ class Command(BaseCommand):
                 collection_item.pop("tags", None)
                 collection_item.pop("accessDate", None)
 
+                # Emails has a subject and don't use title
+                title = collection_item.pop("title", "")
+                subject = collection_item.pop("subject", "")
+
                 zotero_creators = collection_item.pop("creators", [])
                 defaults = {
                     "item_type": collection_item.pop("itemType"),
                     "version": collection_item.pop("version", None),
-                    "title": collection_item.pop("title", ""),
+                    "title": title if title else subject,
                     "short_title": collection_item.pop("shortTitle", ""),
                     "abstract_note": collection_item.pop("abstractNote", ""),
                     "date": collection_item.pop("date", ""),

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load wagtailroutablepage_tags %}
+{% block title %}{{ title|safe }} | {% endblock %}
+{% block metadata %}{% endblock %}
+{% block main_additional %} id="references"{% endblock %}
+{% block main %}
+{% if collections %}<ul id="secondary-nav">
+  {% for collection in collections %}<li><a {% if collection.category.slug in current %}class="current" {% endif %}href="{% routablepageurl page 'view_references' collection.category.slug %}">{{collection.name|title}}</a></li>{% endfor %}
+  </ul>{% endif %}
+  <div>
+    <h2>{{ title }}</h2>
+    {% if current and current|length < 3 %}
+    <p class="filter">Apply filter:</p>
+    <ul class="filter">
+    {% for collection in collections %}
+    {% if not collection.category.slug in current %}
+    <li><a href="{% if current|length == 1 %}{% routablepageurl page 'view_references' current.0 collection.category.slug %}{% elif current|length == 2 %}{% routablepageurl page 'view_references' current.0 current.1 collection.category.slug %}{% endif %}">{{collection.name|title}}</a></li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <table>
+      <thead>
+        <tr>
+          <th class="number">#</th>
+          <th class="date"><a {% if order_by == 'date' %}class="order-forward" {% elif order_by == '-date' %}class="order-reverse" {% endif %}href="{% if order_by == 'date' %}{{request.path}}?order=-date{% else %}{{request.path}}?order=date{% endif %}">Date</a></th>
+          <th class="title"><a {% if order_by == 'title' %}class="order-forward" {% elif order_by == '-title' %}class="order-reverse" {% endif %}href="{% if order_by == 'title' %}{{request.path}}?order=-title{% else %}{{request.path}}?order=title{% endif %}">Title</a></th>
+          <th class="creators">Creators</th>
+        </tr>
+        <tbody>
+          {% for reference in references %}
+            <tr>
+              <td>{{ forloop.counter0|add:references.start_index }}</td>
+              <td>{{ reference.date }}</td>
+              <td><a href="{% routablepageurl page 'view_reference' reference.key %}">{{reference.title}}</a> <span class="highlight">{{ reference.get_item_type_display }}</span>{% for collection in reference.collections.all %}{% if not collection.hidden %} <a href="{% routablepageurl page 'view_references' collection.category.slug %}" class="highlight">{{ collection.name|title }}</a>{% endif %}{% endfor %}</td>
+              <td>
+                {% for role in reference.role_set.all %}
+                  {% ifequal creator_slug role.creator.slug %}{{ role.creator }}{% else %}<a href="{% routablepageurl page 'view_creator_references' role.creator.slug %}">{{ role.creator }}</a>{% endifequal %} <span class="highlight">{{ role.title }}</span>{% if not forloop.last %},{% endif %}
+                {% endfor %}
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+      </thead>
+    </table>
+    {% if references.paginator.num_pages > 1 %}
+    <div id="pagination">
+      <h3>More references</h3>
+        <ol>{% if references.has_previous %}<li><a title="Previous page of references" href="?page={{ references.previous_page_number }}{{ query_string }}">&lt;</a></li>{% else %}<li class="disabled">&lt;</li>{% endif %}<li>
+        {% if references.number != 1 %}<a href="?page=1{{ query_string }}">1</a>{% else %}<span class="selected">1</span>{% endif %}</li>{% if references.number > 2 %}{% if references.number != 3 %}<li class="disabled">&#8230;</li>{% endif %}<li><a href="?page={{ references.previous_page_number }}{{ query_string }}">{{ references.previous_page_number }}</a></li>{% endif %}{% if references.number != 1 and references.number != references.paginator.num_pages %}<li>
+        <span class="selected">{{references.number}}</span></li>{% endif %}{% if references.number < references.paginator.num_pages|add:"-1" %}<li><a href="?page={{ references.next_page_number }}{{ query_string }}">{{ references.next_page_number }}</a></li>{% if references.number != references.paginator.num_pages|add:"-2" %}<li class="disabled">&#8230;</li>{% endif %}{% endif %}<li>
+        {% if references.number != references.paginator.num_pages %}<a href="?page={{ references.paginator.num_pages }}{{ query_string }}">{{ references.paginator.num_pages }}</a>{% else %}<span class="selected">{{ references.paginator.num_pages }}</span>{% endif %}</li>{% if references.has_next %}<li><a title="Next page of references" href="?page={{ references.next_page_number }}{{ query_string }}">&gt;</a></li>{% else %}<li class="disabled">&gt;</li>{% endif %}
+        </ol>
+    </div>
+  {% endif %}
+  </div>
+{% endblock %}

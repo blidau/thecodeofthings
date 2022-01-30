@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "blog.apps.BlogConfig",
     "poems.apps.PoemsConfig",
+    "references.apps.ReferencesConfig",
     "search",
     "wagtail.contrib.routable_page",
     "wagtail.contrib.forms",

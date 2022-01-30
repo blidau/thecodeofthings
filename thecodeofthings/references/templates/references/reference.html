@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load wagtailroutablepage_tags references_tags %}
+{% block title %}{{ title }} | Reference | {% endblock %}
+{% block metadata %}{% endblock %}
+
+{% block main %}
+{% if collections %}<ul id="secondary-nav">
+{% for collection in collections %}<li><a href="{% routablepageurl page 'view_references' collection.category.slug %}">{{collection.name|title }}</a></li>{% endfor %}
+</ul>{% endif %}
+<div id="reference">
+<h2>Reference</h2>
+<article>
+  <header>
+    <h3>{{ reference.title }} <span class="highlight">{{ reference.get_item_type_display }}</span></h3>
+    <dl>
+    <dt>Collections</dt>
+    {% for collection in reference.collections.all %}{% if not collection.hidden %}<dd><a href="{% routablepageurl page 'view_references' collection.category.slug %}">{{collection.name|title }}</a></dd>{% endif %}{% endfor %}
+    </dl>
+  </header>
+  <table>
+    <tr><th>Type</th><td>{{ reference.get_item_type_display }}</td></tr>
+    <tr><th>Title</th><td>{{ reference.title }}</td></tr>{% if reference.date %}
+    <tr><th>Date</th><td>{{ reference.date }}</td></tr>{% endif %}{% for role in reference.role_set.all %}
+    <tr><th>{{ role.title|title }}</th><td><a href="{% routablepageurl page 'view_creator_references' role.creator.slug %}">{{ role.creator }}</a></td></tr>{% endfor %}{% if reference.rights %}
+    <tr><th>Rights</th><td>{{ reference.rights }}</td></tr>{% endif %}{% if reference.extra %}
+    <tr><th class="extra">Extra</th><td class="extra">{{ reference.extra|safe }}</td></tr>{% endif %}{% if reference.url %}
+    <tr><th>URL</th><td><a href="{{ reference.url }}">{{ reference.url }}</a></td></tr>{% endif %}
+    {% for additional_key, additional_value in reference.additional.items %}{% if additional_value %}
+    <tr><th>{{ additional_key|format_title|title }}</th><td>{{ additional_value }}</td></tr>{% endif %}{% endfor %}
+  </table>
+</article>
+</div>
+{% endblock %}

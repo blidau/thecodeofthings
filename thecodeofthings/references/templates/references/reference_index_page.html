@@ -45,7 +45,7 @@
     </table>
     {% if references.paginator.num_pages > 1 %}
     <div id="pagination">
-      <h3>More references</h3>
+      <h3>More {{ page.title|lower }}</h3>
         <ol>{% if references.has_previous %}<li><a title="Previous page of references" href="?page={{ references.previous_page_number }}{{ query_string }}">&lt;</a></li>{% else %}<li class="disabled">&lt;</li>{% endif %}<li>
         {% if references.number != 1 %}<a href="?page=1{{ query_string }}">1</a>{% else %}<span class="selected">1</span>{% endif %}</li>{% if references.number > 2 %}{% if references.number != 3 %}<li class="disabled">&#8230;</li>{% endif %}<li><a href="?page={{ references.previous_page_number }}{{ query_string }}">{{ references.previous_page_number }}</a></li>{% endif %}{% if references.number != 1 and references.number != references.paginator.num_pages %}<li>
         <span class="selected">{{references.number}}</span></li>{% endif %}{% if references.number < references.paginator.num_pages|add:"-1" %}<li><a href="?page={{ references.next_page_number }}{{ query_string }}">{{ references.next_page_number }}</a></li>{% if references.number != references.paginator.num_pages|add:"-2" %}<li class="disabled">&#8230;</li>{% endif %}{% endif %}<li>

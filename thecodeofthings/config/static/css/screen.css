@@ -1292,6 +1292,12 @@ article footer {
    background-size: 0.8em; 	
    display:block;
 }
+.blidau {
+  padding: 0 0 4px 23px;
+  background: url("../images/bl.png") no-repeat 0 2px;
+  background-size: 1em;
+  display:block;
+}
 .twitter {
    padding: 0 0 4px 23px;
    background: url("../images/twitter.png") no-repeat 0 2px;

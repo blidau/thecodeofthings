@@ -31,6 +31,12 @@
 <dd>{{ medium.name }}</dd>{% endfor %}
 </dl>
 {% endif %}
+{% if page.repository %}
+<dl id="source">
+<dt>Source</dt>
+<dd><a href="{{ page.repository }}">Repository</a></dd>
+</dl>
+{% endif %}
 {{ page.description|richtext }}
 {% if page.versions %}
 <h3 class="versions">Versions</h3>

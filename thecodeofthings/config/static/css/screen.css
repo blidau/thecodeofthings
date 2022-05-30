@@ -444,6 +444,24 @@ main #poems article section .version-links a:active {
   color:#3B3C40;
   border: 1px solid #3B3C40;
 }
+main #poems article #source {
+  margin-top: 5px;
+}
+main #poems article #source a {
+  background-color:#3B3C40;
+  color: #FFF8DF;
+  border-radius: 5px;
+  padding: 0 0.2em;
+  text-decoration: none;
+  border: 1px solid #3B3C40;
+}
+main #poems article #source a:focus,
+main #poems article #source a:hover,
+main #poems article #source a:active {
+  background-color: #FFF8DF;
+  color:#3B3C40;
+  border: 1px solid #3B3C40;
+}
 /*main article.event p:first-of-type:first-letter, 
 main #poems article p:first-of-type:first-letter, 
 main div#reference article table p:first-of-type:first-letter {

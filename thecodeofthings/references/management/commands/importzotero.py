@@ -136,7 +136,7 @@ class Command(BaseCommand):
             for removed_reference in removed_references:
                 self.stdout.write(
                     f"Removed '{removed_reference.title}' ({removed_reference.key})"
-                    f" from collection {removed_reference.name}"
+                    f" from collection {collection.name}"
                 )
                 removed_reference.collections.remove(collection)
         # Delete references with no collections
